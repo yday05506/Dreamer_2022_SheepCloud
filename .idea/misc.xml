@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Mirim/AndroidStudioProjects/Dreamer_2022_SheepCloud/app/src/main/res/drawable/image_6.xml" value="0.1" />
+        <entry key="..\:/Users/Mirim/AndroidStudioProjects/Dreamer_2022_SheepCloud/app/src/main/res/font/font.xml" value="0.175" />
         <entry key="..\:/Users/Mirim/AndroidStudioProjects/Dreamer_2022_SheepCloud/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Mirim/AndroidStudioProjects/Dreamer_2022_SheepCloud/app/src/main/res/layout/activity_user.xml" value="0.25" />
+        <entry key="..\:/Users/Mirim/AndroidStudioProjects/Dreamer_2022_SheepCloud/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>
   </component>

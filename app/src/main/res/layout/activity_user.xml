@@ -5,16 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:paddingBottom="50dp"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
     tools:context=".userActivity">
 
-    <!-- Rectangle 275 -->
+    <!-- 프로필 사진 -->
     <View
-        android:id="@+id/rectangle_2"
-        android:layout_width="360dp"
-        android:layout_height="24dp"
+        android:id="@+id/ellipse_10"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_alignParentLeft="true"
+        android:layout_gravity="center"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="-24dp"
-        android:background="#C4C4C4" />
+        android:layout_marginTop="130dp"
+        android:background="#C4C4C4"
+        />
+
+    <!-- 후기 작성 횟수 -->
+    <View
+        android:id="@+id/rectangle_8"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="110dp"
+        android:background="#C4C4C4"
+        />
+
 
 </LinearLayout>

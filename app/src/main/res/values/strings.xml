@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Dreamer_2022_SheepCloud</string>
+
+    <!-- strings.xml -->
+    <string name="some_id">
+
+7\u00EC\u009B\u0094 \u00EB\u008B\u00AC\u00EC\u009D\u0098\n\u00EA\u00BF\u0088
+</string>
+
 </resources>
+
