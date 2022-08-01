@@ -9,7 +9,7 @@
 
     <!-- 7월 달의 꿈 -->
     <ImageView
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="5dp"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginLeft="25dp"
@@ -23,7 +23,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="109dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/image_6" />
 
     <!-- 깃털 2 -->
@@ -34,7 +34,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="50dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/image_4"
         />
 
@@ -51,14 +51,33 @@
         />
 
     <!-- nav 바 -->
-    <View
-        android:id="@+id/rectangle_2"
-        android:layout_width="360dp"
-        android:layout_height="48dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/Rectangle_231"
-        />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/btn_plus"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/plus"
+            android:layout_marginBottom="5dp"
+            />
+
+        <ImageView
+            android:layout_width="400dp"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:elevation="10dp"
+            android:background="#ffffff"
+            android:src="@drawable/nav_bar" />
+    </FrameLayout>
+
+
 
 
 </LinearLayout>
