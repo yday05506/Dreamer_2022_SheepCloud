@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/tab1"
-        android:title="list"/>
+        android:id="@+id/tab_list"
+        android:icon="@drawable/list"
+        android:title=""/>
 
     <item
-        android:id="@+id/tab2"
-        android:title="write"/>
+        android:id="@+id/tab_write"
+        android:icon="@drawable/plus"
+        android:title=""/>
 
     <item
-        android:id="@+id/tab3"
-        android:title="Mpage"/>
+        android:id="@+id/tab_mypage"
+        android:icon="@drawable/mypage"
+        android:title=""/>
 
 </menu>
