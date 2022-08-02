@@ -13,8 +13,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ImageView btnPlus = findViewById(R.id.btn_plus);
-        btnPlus.bringToFront();
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();

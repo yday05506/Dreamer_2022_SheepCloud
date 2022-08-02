@@ -51,33 +51,15 @@
         android:layout_marginTop="1dp"
         android:background="@drawable/image_5" />
 
-    <ImageView
-        android:layout_width="400dp"
-        android:layout_height="48dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="10dp"
-        android:background="#ffffff"
-        android:elevation="10dp"
-        android:src="@drawable/nav_bar" />
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageButton
-            android:id="@+id/btn_plus"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentLeft="true"
-            android:layout_gravity="center"
-            android:layout_alignParentTop="true"
-            android:src="@drawable/plus"
-            android:layout_marginBottom="5dp"
-            />
-
-    </FrameLayout>
-
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+    android:id="@+id/tab_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    app:backgroundTint="#DFF4C7"
+    app:labelVisibilityMode="labeled"
+    app:menu="@menu/tab_bar" />
 
 
 
