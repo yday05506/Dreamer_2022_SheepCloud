@@ -1,5 +1,6 @@
 package com.example.dreamer_2022_sheepcloud;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Bitmap;
@@ -14,5 +15,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ImageView btnPlus = findViewById(R.id.btn_plus);
         btnPlus.bringToFront();
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
     }
 }

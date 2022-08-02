@@ -39,23 +39,33 @@
         />
 
     <!-- 깃털 3 -->
+
+    <!-- nav 바 -->
     <View
         android:id="@+id/feather_3"
         android:layout_width="307dp"
         android:layout_height="136dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="40dp"
         android:layout_alignParentTop="true"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="1dp"
-        android:background="@drawable/image_5"
-        />
+        android:background="@drawable/image_5" />
 
-    <!-- nav 바 -->
+    <ImageView
+        android:layout_width="400dp"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:background="#ffffff"
+        android:elevation="10dp"
+        android:src="@drawable/nav_bar" />
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/btn_plus"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -66,15 +76,6 @@
             android:layout_marginBottom="5dp"
             />
 
-        <ImageView
-            android:layout_width="400dp"
-            android:layout_height="48dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="10dp"
-            android:elevation="10dp"
-            android:background="#ffffff"
-            android:src="@drawable/nav_bar" />
     </FrameLayout>
 
 
