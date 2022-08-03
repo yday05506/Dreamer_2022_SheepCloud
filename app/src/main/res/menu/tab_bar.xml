@@ -2,17 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/tab_list"
+        android:enabled="true"
         android:icon="@drawable/list"
-        android:title=""/>
+        android:title="List"/>
 
     <item
         android:id="@+id/tab_write"
+        android:enabled="true"
         android:icon="@drawable/plus"
-        android:title=""/>
+        android:title="Write"/>
 
     <item
         android:id="@+id/tab_mypage"
+        android:enabled="true"
         android:icon="@drawable/mypage"
-        android:title=""/>
+        android:title="My Page"/>
 
 </menu>
