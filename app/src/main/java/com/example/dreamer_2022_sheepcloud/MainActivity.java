@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        n_textv = findViewById(R.id.t_textv);
+        n_textv = findViewById(R.id.t_textv); // (1)
     }
 
 
