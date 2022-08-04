@@ -5,35 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
-
-
-    <!-- 7월 달의 꿈 -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="50dp">
-        <TextView
-            android:id="@+id/t_textv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:text="n월달의"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="40sp"
-            android:text="꿈"/>
-    </LinearLayout>
-
-    <!-- 깃털존 -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="8"
-        android:orientation="vertical">
-    </LinearLayout>
+    tools:context=".WriteActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -58,7 +30,7 @@
             android:layout_weight="1"
             android:layout_gravity="center"
             android:backgroundTint="#ffffff"
-            android:src="@drawable/plus"/>
+            android:src="@drawable/plus_select"/>
 
         <ImageButton
             android:id="@+id/btn_user"
@@ -71,7 +43,5 @@
 
 
     </LinearLayout>
-
-
 
 </LinearLayout>
