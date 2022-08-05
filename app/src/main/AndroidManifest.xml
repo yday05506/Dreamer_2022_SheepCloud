@@ -23,15 +23,6 @@
             android:name=".UserActivity"
             android:exported="false" />
         <activity
-            android:name=".User"
-            android:exported="false" />
-        <activity
-            android:name=".Write"
-            android:exported="false" />
-        <activity
-            android:name=".List"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
