@@ -1,19 +1,28 @@
 package com.example.dreamer_2022_sheepcloud;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 public class WriteActivity extends AppCompatActivity {
     ImageButton btnList, btnUser;
+    private int wYear = 0, wMonth = 0, wDay = 0;
+    private DatePicker.OnDateChangedListener wOnDateChangedListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +47,17 @@ public class WriteActivity extends AppCompatActivity {
 
             }
         });
+        
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_write);
+
+        Calendar calendar = new GregorianCalendar();
+        wYear = calendar.get(Calendar.YEAR);
+        wMonth = calendar.get(Calendar.MONTH);
+        wDay = calendar.get(Calendar.DAY_OF_MONTH);
+
+        DatePicker datePicker = findViewById(R.id.write_date);
+        datePicker.init(wYear, wMonth, wDay, wOnDateChangedListener);
 
         // 타이틀바 없애는 거임!! 지우지 마셈!!
         ActionBar actionBar = getSupportActionBar();
@@ -61,5 +81,14 @@ public class WriteActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        
+        DatePicker.OnDateChangedListener wOnDateChangedListener = new DatePicker.OnDateChangedListener() {
+            @Override
+            public void onDateChanged(DatePicker datePicker, int yy, int mm, int dd) {
+                wYear = yy;
+                wMonth = mm;
+                wDay = dd;
+            }
+        };
     }
 }

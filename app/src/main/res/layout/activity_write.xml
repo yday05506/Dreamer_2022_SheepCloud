@@ -20,20 +20,25 @@
             android:src="@drawable/write_rectengle1"
             android:layout_gravity="center"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <Button
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="07/28"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_marginTop="100dp"
-            android:layout_marginLeft="10dp"
-            android:textSize="16sp"/>
+            android:onClick=""
 
-        <TextView
+        <DatePicker
+            android:id="@+id/write_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="레베카"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoSizeTextType="uniform"
+            android:autoSizeStepGranularity="3sp"
+            android:hint="제목"
+            android:background="@null"
             android:textSize="25sp"
             android:layout_marginTop="140dp"
             android:layout_marginLeft="10dp"
@@ -41,6 +46,7 @@
             android:textColor="#B37640CE"/>
 
         <EditText
+            android:hint="내용"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:autoSizeTextType="uniform"
