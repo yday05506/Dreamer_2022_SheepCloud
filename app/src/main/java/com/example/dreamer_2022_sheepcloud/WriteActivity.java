@@ -3,6 +3,8 @@ package com.example.dreamer_2022_sheepcloud;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -47,7 +49,7 @@ public class WriteActivity extends AppCompatActivity {
 
             }
         });
-        
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_write);
 
@@ -81,14 +83,18 @@ public class WriteActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        
-        DatePicker.OnDateChangedListener wOnDateChangedListener = new DatePicker.OnDateChangedListener() {
-            @Override
-            public void onDateChanged(DatePicker datePicker, int yy, int mm, int dd) {
-                wYear = yy;
-                wMonth = mm;
-                wDay = dd;
-            }
-        };
+    }
+
+    public void showDatePicker(View view) {
+        DialogFragment writeFragment = new DatePickerFragment();
+        writeFragment.show(getSupportFragmentManager(), "datePicker");
+    }
+
+    public void processDatePickerResult(int year, int month, int day) {
+        String month_string = Integer.toString(month + 1);
+        String day_string = Integer.toString(day);
+        String year_string = Integer.toString(year);
+        String dateMessage = (year_string + "/" + month_string + "/" + day_string);
+        Toast.makeText(this, dateMessage, Toast.LENGTH_SHORT).show();
     }
 }
