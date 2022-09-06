@@ -20,46 +20,10 @@
             android:src="@drawable/write_rectangle3"
             android:layout_gravity="center"/>
 
-        <Spinner
-        android:id="@+id/spinner_kind"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginTop="105dp"/>
-
         <ImageView
             android:id="@+id/btn_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="#ffffff"
-            android:src="@drawable/write_retecgle2"/>
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:autoSizeTextType="uniform"
-            android:autoSizeStepGranularity="3sp"
-            android:hint="제목"
-            android:background="@null"
-            android:textSize="25sp"
-            android:layout_marginTop="140dp"
-            android:layout_marginLeft="10dp"
-            android:textStyle="bold"
-            android:textColor="#B37640CE"/>
-
-        <EditText
-            android:hint="내용"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:autoSizeTextType="uniform"
-            android:layout_gravity="center_horizontal"
-            android:autoSizeMinTextSize="12sp"
-            android:autoSizeMaxTextSize="100sp"
-            android:autoSizeStepGranularity="2sp"
-            android:background="@null"
-            android:textSize="16sp"
-            android:layout_marginTop="200dp"/>
-
     </FrameLayout>
 
     <LinearLayout
@@ -97,8 +61,6 @@
             android:layout_gravity="center"
             android:backgroundTint="#ffffff"
             android:src="@drawable/mypage"/>
-
-
     </LinearLayout>
 
 </LinearLayout>
