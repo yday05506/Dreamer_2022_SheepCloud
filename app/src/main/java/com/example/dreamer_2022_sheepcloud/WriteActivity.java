@@ -53,14 +53,6 @@ public class WriteActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_write);
 
-        Calendar calendar = new GregorianCalendar();
-        wYear = calendar.get(Calendar.YEAR);
-        wMonth = calendar.get(Calendar.MONTH);
-        wDay = calendar.get(Calendar.DAY_OF_MONTH);
-
-        DatePicker datePicker = findViewById(R.id.write_date);
-        datePicker.init(wYear, wMonth, wDay, wOnDateChangedListener);
-
         // 타이틀바 없애는 거임!! 지우지 마셈!!
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
@@ -83,18 +75,5 @@ public class WriteActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-
-    public void showDatePicker(View view) {
-        DialogFragment writeFragment = new DatePickerFragment();
-        writeFragment.show(getSupportFragmentManager(), "datePicker");
-    }
-
-    public void processDatePickerResult(int year, int month, int day) {
-        String month_string = Integer.toString(month + 1);
-        String day_string = Integer.toString(day);
-        String year_string = Integer.toString(year);
-        String dateMessage = (year_string + "/" + month_string + "/" + day_string);
-        Toast.makeText(this, dateMessage, Toast.LENGTH_SHORT).show();
     }
 }
