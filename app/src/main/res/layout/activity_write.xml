@@ -17,8 +17,8 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/write_rectangle3"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:src="@drawable/write_rectangle3" />
 
         <EditText
             android:id="@+id/write_title"
@@ -27,8 +27,8 @@
             android:maxLength="20"
             android:hint="제목"
             android:textSize="30sp"
-            android:layout_marginTop="55sp"
-            android:layout_marginLeft="20sp"
+            android:layout_marginTop="85sp"
+            android:layout_marginLeft="40sp"
             android:textColor="#B37640CE"
             android:background="@null"/>
 
@@ -37,14 +37,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLength="200"
-            android:layout_marginTop="130sp"
-            android:layout_marginLeft="20sp"
+            android:layout_marginTop="180sp"
+            android:layout_marginLeft="40sp"
             android:hint="내용"
             android:background="@null"/>
 
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="400sp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/write_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <Spinner
+                android:id="@+id/write_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="290sp"
+                android:layout_marginTop="20sp" />
+        </LinearLayout>
     </FrameLayout>
 
     <LinearLayout
