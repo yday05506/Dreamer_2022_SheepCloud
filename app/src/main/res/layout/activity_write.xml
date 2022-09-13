@@ -20,8 +20,29 @@
             android:src="@drawable/write_rectangle3"
             android:layout_gravity="center"/>
 
-        <ImageView
-            android:id="@+id/btn_date"
+        <EditText
+            android:id="@+id/write_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLength="20"
+            android:hint="제목"
+            android:textSize="30sp"
+            android:layout_marginTop="55sp"
+            android:layout_marginLeft="20sp"
+            android:textColor="#B37640CE"
+            android:background="@null"/>
+
+        <EditText
+            android:id="@+id/write_contents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLength="200"
+            android:layout_marginTop="130sp"
+            android:layout_marginLeft="20sp"
+            android:hint="내용"
+            android:background="@null"/>
+
+        <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
     </FrameLayout>
