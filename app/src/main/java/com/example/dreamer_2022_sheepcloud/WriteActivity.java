@@ -3,6 +3,8 @@ package com.example.dreamer_2022_sheepcloud;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,9 +12,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+
 public class WriteActivity extends AppCompatActivity {
     TextView textView;
-    String[] cultureKind = {"뮤지컬", "책", "영화", "드라마", "미술관/박물관", "기타"};
+    DatePickerDialog datePickerDialog;
+    String[] cultureKind = {"종류 선택", "뮤지컬", "책", "영화", "드라마", "미술관/박물관", "기타"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

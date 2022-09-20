@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Dreamer_2022_SheepCloud</string>
     <string-array name="spinner_array">
-        <item>뮤지컬</item>
+        <item>&#160;&#160;&#160;종류 선택</item>
+        <item>&#160;뮤지컬</item>
         <item>책</item>
         <item>영화</item>
         <item>드라마</item>
