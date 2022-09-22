@@ -33,7 +33,7 @@
             android:background="@null"/>
 
         <Button
-            android:id="@+id/write_date"
+            android:id="@+id/write_registration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
@@ -52,14 +52,15 @@
             android:hint="내용"
             android:background="@null"/>
 
-        <Button
-            android:id="@+id/write_btn_date"
+        <TextView
+            android:id="@+id/write_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="35sp"
-            android:backgroundTint="@color/white"
+            android:textSize="18sp"
+            android:text="hello"
+            android:layout_marginTop="45sp"
             android:layout_marginLeft="40sp"
-            android:text="날짜 선택"
+            android:textStyle="bold"
             android:textColor="#737373"/>
 
         <LinearLayout
