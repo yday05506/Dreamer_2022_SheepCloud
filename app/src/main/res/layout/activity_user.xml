@@ -10,8 +10,9 @@
     <!-- 깃털존 -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="568dp"
         android:layout_marginTop="40dp"
+        android:layout_weight="10"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -30,19 +31,92 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="당신의 이름을 남겨주세요."
-            android:textColor="@color/black"
+            android:gravity="center"
+            android:hint="당신의 이름을 남겨주세요."
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40sp">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/user_rectengle" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="각성 등급 | "
+                android:textSize="21sp"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#B38A8099"
+                android:layout_marginTop="15sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="영화 : "
+                android:textSize="20sp"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#737373"
+                android:layout_marginTop="55sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="드라마 : "
+                android:textSize="20sp"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#737373"
+                android:layout_marginTop="95sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="뮤지컬 : "
+                android:textSize="20sp"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#737373"
+                android:layout_marginTop="135sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="미술관 / 박물관 : "
+                android:textSize="20sp"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#737373"
+                android:layout_marginTop="175sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="책 : "
+                android:textSize="20sp"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#737373"
+                android:layout_marginTop="215sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="기타 : "
+                android:textSize="20sp"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#737373"
+                android:layout_marginTop="255sp"/>
+
+        </FrameLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="8"
+        android:layout_height="26dp"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -82,8 +156,6 @@
             android:layout_gravity="center"
             android:backgroundTint="#ffffff"
             android:src="@drawable/mypage"/>
-
-
     </LinearLayout>
 
 

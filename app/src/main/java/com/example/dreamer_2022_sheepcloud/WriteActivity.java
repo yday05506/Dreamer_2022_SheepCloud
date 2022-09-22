@@ -15,6 +15,7 @@ import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,6 +24,7 @@ public class WriteActivity extends AppCompatActivity {
     TextView textView, writeDate;
     String[] cultureKind = {"종류 선택", "뮤지컬", "책", "영화", "드라마", "미술관/박물관", "기타"};
     ImageButton btnList, btnUser;
+    Button btnRegist;
 
     long mNow = System.currentTimeMillis();
     Date mReDate = new Date(mNow);
@@ -41,6 +43,15 @@ public class WriteActivity extends AppCompatActivity {
 
         btnList = findViewById(R.id.btn_list);
         btnUser = findViewById(R.id.btn_user);
+        btnRegist = findViewById(R.id.write_registration);
+
+        btnRegist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast toast = Toast.makeText(getApplicationContext(), "글을 등록하였습니다.", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        });
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, cultureKind);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
