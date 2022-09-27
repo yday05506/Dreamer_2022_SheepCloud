@@ -5,16 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
 
 public class UserActivity extends AppCompatActivity {
     ImageButton btnList, btnWrite;
-
+    ImageView u_img; // 프로필
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+
+        u_img = findViewById(R.id.ivProfile); // 프로필사진업로드
 
         // 타이틀바 없애는 거임!! 지우지 마셈!!
         ActionBar actionBar = getSupportActionBar();
@@ -38,5 +43,28 @@ public class UserActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        u_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu pop = new PopupMenu(getApplicationContext(), view);
+
+                pop.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        switch (menuItem.getItemId()){
+
+                        }
+
+                        return true;
+                    }
+                });
+            }
+        });
+
+
     }
+
+
+
 }
