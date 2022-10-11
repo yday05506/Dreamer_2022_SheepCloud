@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.LayoutInflater;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.widget.AdapterView;
@@ -25,7 +26,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 
 
 public class ListActivity extends AppCompatActivity {
@@ -49,16 +49,16 @@ public class ListActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.listv);
 
         Cursor cursor = getMemoCursor();
-        mAdapter = new MemoAdapter(this.cursor);
+        mAdapter = new MemoAdapter(this, cursor);
         listView.setAdapter(mAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int p, long i) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
-                Intent intent = new Intent(WriteActivity.class, ListActivity.class);
+                Intent intent = new Intent(ListActivity.this, WriteActivity.class);
 
-                Cursor cursor = (Cursor) mAdapter.getItem(p);
+                Cursor cursor = (Cursor) mAdapter.getItem(position);
 
                 String title = cursor.getString(cursor.getColumnIndexOrThrow(MemoContract.MemoEntry.COLUMN_NAME_TITLE));
                 String content = cursor.getString(cursor.getColumnIndexOrThrow(MemoContract.MemoEntry.COLUMN_NAME_CONTENT));
@@ -72,32 +72,34 @@ public class ListActivity extends AppCompatActivity {
         });
 
 
-        listView.setOnItemClickListener(new AdapterView.OnItemLongClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> p, View view, int p, long i) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 final long deleteld = id;
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(ListActivity.this);
 
                 builder.setTitle("memo delete");
                 builder.setMessage("are you going to delete the note?");
                 builder.setPositiveButton("delete", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int which) {
-                        SQLiteDatabase db = MemoDbHelper.getInstance(MainActivity.this).getWritableDatabase();
+                        SQLiteDatabase db = MemoDbHelper.getInstance(ListActivity.this).getWritableDatabase();
                         int deletedCount = db.delete(MemoContract.MemoEntry.TABLE_NAME, MemoContract.MemoEntry._ID + "=" + deleteld, null);
 
                         if (deletedCount == 0) {
-                            Toast.makeText(MainActivity.this, "delete error", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ListActivity.this, "delete error", Toast.LENGTH_SHORT).show();
                         } else {
                             mAdapter.swapCursor(getMemoCursor());
-                            Toast.makeText(MainActivity.this, "delete succeess", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ListActivity.this, "delete succeess", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
                 builder.setNegativeButton("cancel", null);
                 builder.show();
+
             }
+
         });
 
 
@@ -109,7 +111,7 @@ public class ListActivity extends AppCompatActivity {
 
     private Cursor getMemoCursor() {
         MemoDbHelper dbHelper = MemoDbHelper.getInstance(this);
-        return dbHelper.getReadableDatabase().query(MemoContract.MemoEntry.TABLE_NAME, null, null,null,null,null, null);
+        return dbHelper.getReadableDatabase().query(MemoContract.MemoEntry.TABLE_NAME, null, null, null, null, null, null);
     }
 
     protected void onActivityResult(int requsetCode, int resultCode, @Nullable Intent data) {
@@ -126,8 +128,8 @@ public class ListActivity extends AppCompatActivity {
         }
 
         @Override
-        public View newView(Context context, Cursor cursor, ViewGroup viewGroup) {
-            return LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_1, p, false);
+        public View newView(Context context, Cursor cursor, ViewGroup parent) {
+            return LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_1, parent, false);
         }
 
         @Override
