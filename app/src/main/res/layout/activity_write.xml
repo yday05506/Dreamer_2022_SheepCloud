@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:text="hello"
+            android:text="0000-00-00"
             android:layout_marginTop="45sp"
             android:layout_marginLeft="40sp"
             android:textStyle="bold"

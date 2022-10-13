@@ -7,27 +7,38 @@
     android:orientation="vertical"
     tools:context=".ListActivity">
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="8">
+        android:layout_height="match_parent">
 
-        <ImageView
+        <ListView
+            android:id="@+id/listv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_memoplus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:src="@drawable/list_rectangle1"/>
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="20sp"
+            android:layout_marginBottom="20sp"
+            android:backgroundTint="#7D4BCE"
+            android:clickable="true" />
 
-    </FrameLayout>
+
+    </RelativeLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="bottom"
         android:layout_weight="0.1"
-        android:background="#ffffff"
-        android:elevation="20dp"
         android:orientation="horizontal">
 
         <ImageButton
@@ -37,7 +48,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:backgroundTint="#ffffff"
-            android:src="@drawable/list_select" />
+            android:src="@drawable/list" />
 
         <ImageButton
             android:id="@+id/btn_plus"
@@ -59,5 +70,4 @@
 
 
     </LinearLayout>
-
 </LinearLayout>

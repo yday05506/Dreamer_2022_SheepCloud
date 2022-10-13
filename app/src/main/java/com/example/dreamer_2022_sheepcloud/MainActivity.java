@@ -31,7 +31,6 @@ import java.util.SimpleTimeZone;
 
 public class MainActivity extends AppCompatActivity {
     ImageButton btnList, btnWrite, btnUser;
-    TextView n_texv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         btnList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ListActivity.class);
+                Intent intent = new Intent(MainActivity.this, ListActivity.class);
                 startActivity(intent);
             }
         });
