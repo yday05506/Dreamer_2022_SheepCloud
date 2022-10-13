@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.widget.AdapterView;
 import android.widget.CursorAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +30,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public class ListActivity extends AppCompatActivity {
+    ImageButton btnWrite, btnUser;
 
     public static final int REQUEST_CODE_INSERT = 1000;
     private MemoAdapter mAdapter;
@@ -37,6 +39,9 @@ public class ListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+
+        btnWrite = findViewById(R.id.btn_plus);
+        btnUser = findViewById(R.id.btn_user);
 
         FloatingActionButton fab = findViewById(R.id.btn_memoplus);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -97,11 +102,25 @@ public class ListActivity extends AppCompatActivity {
                 });
                 builder.setNegativeButton("cancel", null);
                 builder.show();
-
             }
 
         });
 
+        btnUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), UserActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnWrite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), WriteActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // 타이틀바 없애는 거임!! 지우지 마셈!!
         ActionBar actionBar = getSupportActionBar();
