@@ -154,6 +154,6 @@
             android:layout_weight="1"
             android:layout_gravity="center"
             android:backgroundTint="#ffffff"
-            android:src="@drawable/mypage"/>
+            android:src="@drawable/mypage_select"/>
     </LinearLayout>
 </LinearLayout>
