@@ -7,9 +7,10 @@
     android:orientation="vertical"
     tools:context=".ListActivity">
 
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ListView
             android:id="@+id/listv"
@@ -18,56 +19,41 @@
 
         </ListView>
 
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btn_memoplus"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginRight="20sp"
-            android:layout_marginBottom="20sp"
-            android:backgroundTint="#7D4BCE"
-            android:clickable="true" />
+            android:gravity="bottom"
+            android:layout_weight="0.1"
+            android:orientation="horizontal">
 
+            <ImageButton
+                android:id="@+id/btn_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:backgroundTint="#ffffff"
+                android:src="@drawable/list" />
+
+            <ImageButton
+                android:id="@+id/btn_plus"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:backgroundTint="#ffffff"
+                android:src="@drawable/plus"/>
+
+            <ImageButton
+                android:id="@+id/btn_user"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:backgroundTint="#ffffff"
+                android:src="@drawable/mypage"/>
+        </LinearLayout>
 
     </RelativeLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="bottom"
-        android:layout_weight="0.1"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/btn_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:backgroundTint="#ffffff"
-            android:src="@drawable/list" />
-
-        <ImageButton
-            android:id="@+id/btn_plus"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:backgroundTint="#ffffff"
-            android:src="@drawable/plus"/>
-
-        <ImageButton
-            android:id="@+id/btn_user"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:backgroundTint="#ffffff"
-            android:src="@drawable/mypage"/>
-
-
-    </LinearLayout>
 </LinearLayout>

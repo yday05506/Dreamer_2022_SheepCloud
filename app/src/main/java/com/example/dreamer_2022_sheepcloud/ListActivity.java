@@ -43,14 +43,6 @@ public class ListActivity extends AppCompatActivity {
         btnWrite = findViewById(R.id.btn_plus);
         btnUser = findViewById(R.id.btn_user);
 
-        FloatingActionButton fab = findViewById(R.id.btn_memoplus);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivityForResult(new Intent(ListActivity.this, WriteActivity.class), REQUEST_CODE_INSERT);
-            }
-        });
-
         ListView listView = findViewById(R.id.listv);
 
         Cursor cursor = getMemoCursor();
