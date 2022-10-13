@@ -107,6 +107,14 @@ public class WriteActivity extends AppCompatActivity {
             }
         });
 
+        btnList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ListActivity.class);
+                startActivity(intent);
+            }
+        });
+
         // 타이틀바 없애는 거임!! 지우지 마셈!!
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
@@ -130,18 +138,18 @@ public class WriteActivity extends AppCompatActivity {
                     null,
                     contentValues);
             if (newRowID == -1) {
-                Toast.makeText(this, "save error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "저장 오류", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "save success", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "저장 완료", Toast.LENGTH_SHORT).show();
                 setResult(RESULT_OK);
             }
         } else {
             int count = db.update(MemoContract.MemoEntry.TABLE_NAME, contentValues, MemoContract.MemoEntry._ID + "=" + mMemoId, null);
 
             if (count == 0) {
-                Toast.makeText(this, "modification error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "modification 오류", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "modification success", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "modification 완료", Toast.LENGTH_SHORT).show();
                 setResult(RESULT_OK);
             }
         }
