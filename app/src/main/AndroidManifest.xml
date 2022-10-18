@@ -3,6 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.dreamer_2022_sheepcloud" >
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.camera2" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,6 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dreamer_2022_SheepCloud"
         tools:targetApi="31" >
+
         <activity
             android:name=".ListActivity"
             android:exported="false" />
