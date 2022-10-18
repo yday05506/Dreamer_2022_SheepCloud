@@ -69,22 +69,5 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-
-//    protected void onStart() {
-//
-//        super.onStart();
-//        getDT();
-//    }
-//
-//    public void getDT() {
-//        long now = System.currentTimeMillis();
-////        Date date = new Date(now);
-//        /*SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm");  // 형식 지정
-//        String getTime3 = simpleDateFormat.format(now);*/
-//        Calendar calendar = Calendar.getInstance();
-//        int getTime3 = calendar.get(Calendar.MONTH)+1;
-//        n_texv.setText(getTime3 + "월 달의");
-//        Log.d("변경날짜", getTime3+"월");
-//    }
     }
 }
