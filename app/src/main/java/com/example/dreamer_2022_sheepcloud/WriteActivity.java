@@ -4,8 +4,10 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -28,7 +30,6 @@ public class WriteActivity extends AppCompatActivity {
     private long mMemoId = -1;
 
     TextView textView, writeDate;
-    DatePickerDialog datePickerDialog;
     String[] cultureKind = {"종류 선택", "뮤지컬", "책", "영화", "드라마", "미술관/박물관", "기타"};
     ImageButton btnList, btnUser;
     Button btnRegist;
@@ -54,14 +55,6 @@ public class WriteActivity extends AppCompatActivity {
         btnList = findViewById(R.id.btn_list);
         btnUser = findViewById(R.id.btn_user);
         btnRegist = findViewById(R.id.write_registration);
-
-        btnRegist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast toast = Toast.makeText(getApplicationContext(), "글을 등록하였습니다.", Toast.LENGTH_SHORT);
-                toast.show();
-            }
-        });
 
 
         Intent intent = getIntent();
