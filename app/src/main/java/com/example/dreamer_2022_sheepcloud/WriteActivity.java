@@ -96,6 +96,7 @@ public class WriteActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast toast = Toast.makeText(getApplicationContext(), "글을 등록하였습니다.", Toast.LENGTH_SHORT);
                 toast.show();
+                onBackPressed();
             }
         });
 
