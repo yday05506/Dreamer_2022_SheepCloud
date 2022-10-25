@@ -69,6 +69,7 @@ public class ListActivity extends AppCompatActivity {
                 startActivityForResult(intent, REQUEST_CODE_INSERT);
             }
         });
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
