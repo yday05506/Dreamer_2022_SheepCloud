@@ -16,16 +16,13 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageButton
             android:id="@+id/ivProfile"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="20dp"
-            android:background="?attr/selectableItemBackground"
-            android:src="@mipmap/ic_launcher"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:src="@drawable/mypage"
+            android:onClick="bt1"
+            />
 
         <EditText
             android:layout_width="wrap_content"
