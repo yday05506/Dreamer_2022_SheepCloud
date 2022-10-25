@@ -31,6 +31,12 @@ import java.util.SimpleTimeZone;
 
 public class MainActivity extends AppCompatActivity {
     ImageButton btnList, btnWrite, btnUser;
+    TextView writeDate;
+
+    long mNow = System.currentTimeMillis();
+    Date mReDate = new Date(mNow);
+    SimpleDateFormat mFormat = new SimpleDateFormat("M월 달의");
+    String formatDate = mFormat.format(mReDate);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
         btnList = findViewById(R.id.btn_list);
         btnWrite = findViewById(R.id.btn_plus);
         btnUser = findViewById(R.id.btn_user);
+
+        writeDate = findViewById(R.id.t_textv);
+        writeDate.setText(formatDate);
 
         btnList.setOnClickListener(new View.OnClickListener() {
             @Override
