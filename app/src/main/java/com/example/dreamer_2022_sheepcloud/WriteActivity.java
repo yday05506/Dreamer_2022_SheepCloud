@@ -130,8 +130,7 @@ public class WriteActivity extends AppCompatActivity {
 
         if (mMemoId == -1) {
             long newRowID = db.insert(MemoContract.MemoEntry.TABLE_NAME,
-                    null,
-                    contentValues);
+                    null, contentValues);
             if (newRowID == -1) {
                 Toast.makeText(this, "저장 오류", Toast.LENGTH_SHORT).show();
             } else {
