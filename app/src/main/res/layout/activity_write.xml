@@ -76,7 +76,8 @@
                 android:layout_height="wrap_content"/>
             <Spinner
                 android:id="@+id/write_spinner"
-                android:layout_width="185sp"
+                android:background="@drawable/spinner_bg"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="250sp"
                 android:textAlignment="center"
