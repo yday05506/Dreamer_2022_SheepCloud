@@ -31,7 +31,7 @@ public class WriteActivity extends AppCompatActivity {
     private long mMemoId = -1;
 
     TextView textView, writeDate;
-    String[] cultureKind = {"종류 선택", "뮤지컬", "책", "영화", "드라마", "미술관/박물관", "기타"};
+    String[] cultureKind = {"    종류 선택", "      뮤지컬", "          책", "        영화", "      드라마", "미술관/박물관", "        기타"};
     ImageButton btnList, btnUser;
     Button btnRegist;
 
