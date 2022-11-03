@@ -9,8 +9,10 @@ import androidx.fragment.app.Fragment;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -38,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     SimpleDateFormat mFormat = new SimpleDateFormat("M월 달의");
     String formatDate = mFormat.format(mReDate);
 
+    int countWrite;    // 글 등록하면 개수 센 값 가져오기
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +53,11 @@ public class MainActivity extends AppCompatActivity {
 
         writeDate = findViewById(R.id.t_textv);
         writeDate.setText(formatDate);
+
+        LinearLayout linear = new LinearLayout(this);
+        linear.setOrientation(LinearLayout.VERTICAL);
+        linear.setGravity(Gravity.CENTER);
+        linear.setBackgroundColor(Color.LTGRAY);
 
         btnList.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +82,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // WriteActivity에 countRegist 값 받아오기
+        Intent writeIntent = getIntent();
+        countWrite = writeIntent.getIntExtra("count", 0);
+
+        if(countWrite != 0) {
+            ImageView feather = new ImageView(this);
+            feather.setImageResource(R.drawable.image_4);   // 이미지 리소스
+            LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            linear.addView(feather, param);
+            setContentView(linear);
+        }
 
         // 타이틀바 없애는 거임!! 지우지 마셈!!
         ActionBar actionBar = getSupportActionBar();

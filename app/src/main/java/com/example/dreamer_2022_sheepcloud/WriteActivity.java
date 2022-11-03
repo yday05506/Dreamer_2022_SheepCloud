@@ -35,6 +35,8 @@ public class WriteActivity extends AppCompatActivity {
     ImageButton btnList, btnUser;
     Button btnRegist;
 
+    int countRegist;    // 글 등록할 때마다 개수 세기
+
     long mNow = System.currentTimeMillis();
     Date mReDate = new Date(mNow);
     SimpleDateFormat mFormat = new SimpleDateFormat("MM / dd");
@@ -57,6 +59,9 @@ public class WriteActivity extends AppCompatActivity {
         btnUser = findViewById(R.id.btn_user);
         btnRegist = findViewById(R.id.write_registration);
 
+        // intent로 MainActivity로 값 전달
+        Intent mainIntent = new Intent(WriteActivity.this, MainActivity.class);
+        mainIntent.putExtra("count", countRegist);
 
         Intent intent = getIntent();
         if (intent != null) {
@@ -91,6 +96,7 @@ public class WriteActivity extends AppCompatActivity {
                 Toast toast = Toast.makeText(getApplicationContext(), "글을 등록하였습니다.", Toast.LENGTH_SHORT);
                 toast.show();
                 onBackPressed();
+                ++countRegist;
             }
         });
 
@@ -147,6 +153,8 @@ public class WriteActivity extends AppCompatActivity {
                 setResult(RESULT_OK);
             }
         }
+
+
         super.onBackPressed();
     }
 }
