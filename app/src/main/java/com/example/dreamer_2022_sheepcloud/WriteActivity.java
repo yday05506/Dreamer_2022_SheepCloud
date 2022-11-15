@@ -100,6 +100,7 @@ public class WriteActivity extends AppCompatActivity {
             }
         });
 
+
         btnUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
