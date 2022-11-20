@@ -62,11 +62,13 @@ public class ListActivity extends AppCompatActivity {
                 String title = cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_TITLE));
                 String content = cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_CONTENT));
                 String cate = cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_CATE));
+                String date = cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_DATE));
 
                 intent.putExtra("id", id);
                 intent.putExtra("title", title);
                 intent.putExtra("content", content);
                 intent.putExtra("cate", cate);
+                intent.putExtra("date", date);
 
                 startActivityForResult(intent, REQUEST_CODE_INSERT);
             }

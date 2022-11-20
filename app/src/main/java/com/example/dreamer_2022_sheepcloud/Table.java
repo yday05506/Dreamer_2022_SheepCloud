@@ -11,5 +11,6 @@ public class Table {
         public static final String COLUMN_NAME_TITLE = "title";
         public static final String COLUMN_NAME_CONTENT = "content";
         public static final String COLUMN_NAME_CATE = "category";
+        public static final String COLUMN_NAME_DATE = "date";
     }
 }

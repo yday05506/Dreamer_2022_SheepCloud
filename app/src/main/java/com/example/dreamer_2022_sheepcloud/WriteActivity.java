@@ -116,12 +116,14 @@ public class WriteActivity extends AppCompatActivity {
         String title = mTitleEditText.getText().toString();
         String contents = mContentEditText.getText().toString();
         String category = spinner.getSelectedItem().toString();
+        String date = writeDate.getText().toString();
 
         // 저장
         ContentValues contentValues = new ContentValues();
         contentValues.put(Table.Entry.COLUMN_NAME_TITLE, title);
         contentValues.put(Table.Entry.COLUMN_NAME_CONTENT, contents);
         contentValues.put(Table.Entry.COLUMN_NAME_CATE, category);
+        contentValues.put(Table.Entry.COLUMN_NAME_DATE, date);
 
 
         // 전달
