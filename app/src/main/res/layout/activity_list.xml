@@ -15,7 +15,8 @@
             android:id="@+id/listv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:transcriptMode="alwaysScroll"></ListView>
+            android:transcriptMode="alwaysScroll">
+        </ListView>
 
         <LinearLayout
             android:layout_width="match_parent"

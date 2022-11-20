@@ -6,20 +6,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".WriteActivity">
-
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:layout_weight="8">
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:src="@drawable/write_rectangle3" />
-
         <EditText
             android:id="@+id/write_title"
             android:layout_width="wrap_content"
@@ -31,7 +28,6 @@
             android:layout_marginLeft="40sp"
             android:textColor="#B37640CE"
             android:background="@null"/>
-
         <Button
             android:id="@+id/write_registration"
             android:layout_width="wrap_content"
@@ -41,7 +37,6 @@
             android:textColor="#737373"
             android:layout_marginTop="35sp"
             android:layout_marginLeft="270sp"/>
-
         <EditText
             android:id="@+id/write_contents"
             android:layout_width="wrap_content"
@@ -52,18 +47,16 @@
             android:layout_marginRight="40sp"
             android:hint="내용"
             android:background="@null"/>
-
         <TextView
             android:id="@+id/write_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:text="0000-00-00"
-            android:layout_marginTop="45sp"
+            android:layout_marginTop="40sp"
             android:layout_marginLeft="40sp"
             android:textStyle="bold"
             android:textColor="#737373"/>
-
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="400sp"
@@ -94,7 +87,6 @@
         android:background="#ffffff"
         android:elevation="20dp"
         android:orientation="horizontal">
-
         <ImageButton
             android:id="@+id/btn_list"
             android:layout_width="match_parent"
@@ -103,7 +95,6 @@
             android:layout_weight="1"
             android:backgroundTint="#ffffff"
             android:src="@drawable/list" />
-
         <ImageButton
             android:id="@+id/btn_plus"
             android:layout_width="match_parent"
@@ -112,7 +103,6 @@
             android:layout_gravity="center"
             android:backgroundTint="#ffffff"
             android:src="@drawable/plus_select"/>
-
         <ImageButton
             android:id="@+id/btn_user"
             android:layout_width="match_parent"
@@ -122,5 +112,4 @@
             android:backgroundTint="#ffffff"
             android:src="@drawable/mypage"/>
     </LinearLayout>
-
 </LinearLayout>

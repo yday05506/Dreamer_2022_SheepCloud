@@ -30,6 +30,12 @@ public class ListActivity extends AppCompatActivity {
     private MemoAdapter mAdapter;
 
     int countList;  // 글 등록할 때마다 개수 세기
+    int countMusical;   // 뮤지컬 선택
+    int countBook;  // 책 선택
+    int countMovie; // 영화 선택
+    int countDrama; // 드라마 선택
+    int countMuseum;    // 미술관/박물관 선택
+    int countOther; // 기타 선택
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -40,6 +40,9 @@ public class UserActivity extends AppCompatActivity {
     int countList;  // 목록 센 값 가져오기
     TextView gradeStep;   // 단계 순서
 
+    int[] countCulture = new int[6];   // 카테고리 선택 센 값 가져오기
+    TextView[] gradeCulture = new TextView[6];  // 카테고리 선택 단계
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +51,12 @@ public class UserActivity extends AppCompatActivity {
         u_img = findViewById(R.id.ivProfile); // 프로필사진업로드
 
         gradeStep = findViewById(R.id.grade_text);
+        gradeCulture[0] = findViewById(R.id.grade_musical);
+        gradeCulture[1] = findViewById(R.id.grade_book);
+        gradeCulture[2] = findViewById(R.id.grade_movie);
+        gradeCulture[3] = findViewById(R.id.grade_drama);
+        gradeCulture[4] = findViewById(R.id.grade_museum);
+        gradeCulture[5] = findViewById(R.id.grade_other);
 
         // 타이틀바 없애는 거임!! 지우지 마셈!!
         ActionBar actionBar = getSupportActionBar();
@@ -69,6 +78,34 @@ public class UserActivity extends AppCompatActivity {
         else if(countList <= 80)
             gradeStep.setText("Step 4");
         else gradeStep.setText("램 수면");
+
+        // WriteActivity에 count 값 받아오기
+        Intent writeIntent = getIntent();
+        countCulture[0] = writeIntent.getIntExtra("countMusical", 0);
+        countCulture[1] = writeIntent.getIntExtra("countBook", 0);
+        countCulture[2] = writeIntent.getIntExtra("countMovie", 0);
+        countCulture[3] = writeIntent.getIntExtra("countDrama", 0);
+        countCulture[4] = writeIntent.getIntExtra("countMuseum", 0);
+        countCulture[5] = writeIntent.getIntExtra("countOther", 0);
+
+        System.out.println("뮤지컬 : " + countCulture[0]);
+        System.out.println("책 : " + countCulture[1]);
+        System.out.println("영화 : " + countCulture[2]);
+        System.out.println("드라마 : " + countCulture[3]);
+        System.out.println("미술관/박물관 : " + countCulture[4]);
+        System.out.println("기타 : " + countCulture[5]);
+
+        for(int i = 0; i < countList; i++) {
+            if(countCulture[i] <= 10)
+                gradeCulture[i].setText("Step 1");
+            else if(countCulture[i] <= 30)
+                gradeCulture[i].setText("Step 2");
+            else if(countCulture[i] <= 50)
+                gradeCulture[i].setText("Step 3");
+            else if(countCulture[i] <= 80)
+                gradeCulture[i].setText("Step 4");
+            else gradeCulture[i].setText("렘 수면");
+        }
 
         btnList.setOnClickListener(new View.OnClickListener() {
             @Override
