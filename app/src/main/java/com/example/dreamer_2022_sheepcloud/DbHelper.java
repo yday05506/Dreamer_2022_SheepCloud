@@ -4,11 +4,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
+public class DbHelper extends SQLiteOpenHelper {
 
-public class MemoDbHelper extends SQLiteOpenHelper {
-
-    private static MemoDbHelper sInstance;
+    private static DbHelper sInstance;
 
     public static final int DB_VERSION = 1;
     public static final String DB_NAME = "Memo.db";
@@ -23,14 +21,14 @@ public class MemoDbHelper extends SQLiteOpenHelper {
     public static final String SQL_DELETE_ENTERS =
             "DROP TABLE IF EXISTS " + MemoContract.MemoEntry.TABLE_NAME;
 
-    public static MemoDbHelper getInstance(Context context) {
+    public static DbHelper getInstance(Context context) {
         if (sInstance == null) {
-            sInstance = new MemoDbHelper(context);
+            sInstance = new DbHelper(context);
         }
         return sInstance;
     }
 
-    private MemoDbHelper(Context context) {
+    private DbHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 

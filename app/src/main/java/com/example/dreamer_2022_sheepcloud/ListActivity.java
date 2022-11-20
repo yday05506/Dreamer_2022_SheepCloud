@@ -10,14 +10,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Point;
 import android.os.Bundle;
-import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.LayoutInflater;
-
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.widget.AdapterView;
 import android.widget.CursorAdapter;
@@ -25,10 +21,6 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public class ListActivity extends AppCompatActivity {
@@ -90,7 +82,7 @@ public class ListActivity extends AppCompatActivity {
                 builder.setPositiveButton("delete", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int which) {
-                        SQLiteDatabase db = MemoDbHelper.getInstance(ListActivity.this).getWritableDatabase();
+                        SQLiteDatabase db = DbHelper.getInstance(ListActivity.this).getWritableDatabase();
                         int deletedCount = db.delete(MemoContract.MemoEntry.TABLE_NAME, MemoContract.MemoEntry._ID + "=" + deleteld, null);
 
                         if (deletedCount == 0) {
@@ -132,7 +124,7 @@ public class ListActivity extends AppCompatActivity {
     }
 
     private Cursor getMemoCursor() {
-        MemoDbHelper dbHelper = MemoDbHelper.getInstance(this);
+        DbHelper dbHelper = DbHelper.getInstance(this);
         return dbHelper.getReadableDatabase().query(MemoContract.MemoEntry.TABLE_NAME, null, null, null, null, null, null);
     }
 

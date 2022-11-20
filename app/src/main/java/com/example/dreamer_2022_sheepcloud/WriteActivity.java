@@ -3,15 +3,10 @@ package com.example.dreamer_2022_sheepcloud;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
 import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -126,7 +121,7 @@ public class WriteActivity extends AppCompatActivity {
         contentValues.put(MemoContract.MemoEntry.COLUMN_NAME_CONTENT, contents);
 
         // 전달
-        SQLiteDatabase db = MemoDbHelper.getInstance(this).getWritableDatabase();
+        SQLiteDatabase db = DbHelper.getInstance(this).getWritableDatabase();
 
         if (mMemoId == -1) {
             long newRowID = db.insert(MemoContract.MemoEntry.TABLE_NAME,
