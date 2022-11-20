@@ -59,8 +59,8 @@ public class ListActivity extends AppCompatActivity {
 
                 Cursor cursor = (Cursor) mAdapter.getItem(position);
 
-                String title = cursor.getString(cursor.getColumnIndexOrThrow(MemoContract.MemoEntry.COLUMN_NAME_TITLE));
-                String content = cursor.getString(cursor.getColumnIndexOrThrow(MemoContract.MemoEntry.COLUMN_NAME_CONTENT));
+                String title = cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_TITLE));
+                String content = cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_CONTENT));
 
                 intent.putExtra("id", id);
                 intent.putExtra("title", title);
@@ -83,7 +83,7 @@ public class ListActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int which) {
                         SQLiteDatabase db = DbHelper.getInstance(ListActivity.this).getWritableDatabase();
-                        int deletedCount = db.delete(MemoContract.MemoEntry.TABLE_NAME, MemoContract.MemoEntry._ID + "=" + deleteld, null);
+                        int deletedCount = db.delete(Table.Entry.TABLE_NAME, Table.Entry._ID + "=" + deleteld, null);
 
                         if (deletedCount == 0) {
                             Toast.makeText(ListActivity.this, "delete error", Toast.LENGTH_SHORT).show();
@@ -125,7 +125,7 @@ public class ListActivity extends AppCompatActivity {
 
     private Cursor getMemoCursor() {
         DbHelper dbHelper = DbHelper.getInstance(this);
-        return dbHelper.getReadableDatabase().query(MemoContract.MemoEntry.TABLE_NAME, null, null, null, null, null, null);
+        return dbHelper.getReadableDatabase().query(Table.Entry.TABLE_NAME, null, null, null, null, null, null);
     }
 
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -150,7 +150,7 @@ public class ListActivity extends AppCompatActivity {
         public void bindView(View view, Context context, Cursor cursor) {
             TextView titleText = view.findViewById(android.R.id.text1);
 
-            titleText.setText(cursor.getString(cursor.getColumnIndexOrThrow(MemoContract.MemoEntry.COLUMN_NAME_TITLE)));
+            titleText.setText(cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_TITLE)));
         }
     }
 

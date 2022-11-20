@@ -117,14 +117,14 @@ public class WriteActivity extends AppCompatActivity {
 
         // 저장
         ContentValues contentValues = new ContentValues();
-        contentValues.put(MemoContract.MemoEntry.COLUMN_NAME_TITLE, title);
-        contentValues.put(MemoContract.MemoEntry.COLUMN_NAME_CONTENT, contents);
+        contentValues.put(Table.Entry.COLUMN_NAME_TITLE, title);
+        contentValues.put(Table.Entry.COLUMN_NAME_CONTENT, contents);
 
         // 전달
         SQLiteDatabase db = DbHelper.getInstance(this).getWritableDatabase();
 
         if (mMemoId == -1) {
-            long newRowID = db.insert(MemoContract.MemoEntry.TABLE_NAME,
+            long newRowID = db.insert(Table.Entry.TABLE_NAME,
                     null, contentValues);
             if (newRowID == -1) {
                 Toast.makeText(this, "저장 오류", Toast.LENGTH_SHORT).show();
@@ -133,7 +133,7 @@ public class WriteActivity extends AppCompatActivity {
                 setResult(RESULT_OK);
             }
         } else {
-            int count = db.update(MemoContract.MemoEntry.TABLE_NAME, contentValues, MemoContract.MemoEntry._ID + "=" + mMemoId, null);
+            int count = db.update(Table.Entry.TABLE_NAME, contentValues, Table.Entry._ID + "=" + mMemoId, null);
 
             if (count == 0) {
                 Toast.makeText(this, "modification 오류", Toast.LENGTH_SHORT).show();

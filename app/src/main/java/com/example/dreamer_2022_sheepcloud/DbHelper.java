@@ -12,14 +12,14 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String DB_NAME = "Memo.db";
     public static final String SQL_CREATE_ENTERS =
             String.format("CREATE TABLE %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s TEXT)",
-                    MemoContract.MemoEntry.TABLE_NAME,
-                    MemoContract.MemoEntry._ID,
-                    MemoContract.MemoEntry.COLUMN_NAME_TITLE,
-                    MemoContract.MemoEntry.COLUMN_NAME_CONTENT,
-                    MemoContract.MemoEntry.COLUMN_NAME_CATE);
+                    Table.Entry.TABLE_NAME,
+                    Table.Entry._ID,
+                    Table.Entry.COLUMN_NAME_TITLE,
+                    Table.Entry.COLUMN_NAME_CONTENT,
+                    Table.Entry.COLUMN_NAME_CATE);
 
     public static final String SQL_DELETE_ENTERS =
-            "DROP TABLE IF EXISTS " + MemoContract.MemoEntry.TABLE_NAME;
+            "DROP TABLE IF EXISTS " + Table.Entry.TABLE_NAME;
 
     public static DbHelper getInstance(Context context) {
         if (sInstance == null) {
