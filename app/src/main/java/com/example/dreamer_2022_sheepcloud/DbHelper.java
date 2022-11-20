@@ -1,5 +1,9 @@
 package com.example.dreamer_2022_sheepcloud;
 
+import static com.example.dreamer_2022_sheepcloud.Table.Entry.COLUMN_NAME_CATE;
+import static com.example.dreamer_2022_sheepcloud.Table.Entry.COLUMN_NAME_CONTENT;
+import static com.example.dreamer_2022_sheepcloud.Table.Entry.COLUMN_NAME_TITLE;
+
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -44,4 +48,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_ENTERS);
         onCreate(db);
     }
+
+
+
 }

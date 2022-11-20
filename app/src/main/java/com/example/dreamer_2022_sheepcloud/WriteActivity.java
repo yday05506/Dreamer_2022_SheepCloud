@@ -29,6 +29,7 @@ public class WriteActivity extends AppCompatActivity {
     String[] cultureKind = {"    종류 선택", "      뮤지컬", "          책", "        영화", "      드라마", "미술관/박물관", "        기타"};
     ImageButton btnList, btnUser;
     Button btnRegist;
+    Spinner spinner;
 
     long mNow = System.currentTimeMillis();
     Date mReDate = new Date(mNow);
@@ -44,9 +45,9 @@ public class WriteActivity extends AppCompatActivity {
         mContentEditText = findViewById(R.id.write_contents);
 
         textView = findViewById(R.id.write_textView);
-        Spinner spinner = findViewById(R.id.write_spinner);
         writeDate = findViewById(R.id.write_date);
         writeDate.setText(formatDate);
+        spinner = findViewById(R.id.write_spinner);
 
         btnList = findViewById(R.id.btn_list);
         btnUser = findViewById(R.id.btn_user);
@@ -114,11 +115,14 @@ public class WriteActivity extends AppCompatActivity {
     public void onBackPressed() {
         String title = mTitleEditText.getText().toString();
         String contents = mContentEditText.getText().toString();
+        String category = spinner.getSelectedItem().toString();
 
         // 저장
         ContentValues contentValues = new ContentValues();
         contentValues.put(Table.Entry.COLUMN_NAME_TITLE, title);
         contentValues.put(Table.Entry.COLUMN_NAME_CONTENT, contents);
+        contentValues.put(Table.Entry.COLUMN_NAME_CATE, category);
+
 
         // 전달
         SQLiteDatabase db = DbHelper.getInstance(this).getWritableDatabase();
@@ -142,6 +146,7 @@ public class WriteActivity extends AppCompatActivity {
                 setResult(RESULT_OK);
             }
         }
+
 
 
         super.onBackPressed();

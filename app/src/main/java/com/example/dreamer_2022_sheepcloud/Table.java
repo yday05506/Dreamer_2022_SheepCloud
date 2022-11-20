@@ -7,7 +7,7 @@ public class Table {
     private Table(){}
 
     public static class Entry implements BaseColumns {
-        public static final String TABLE_NAME = "memo";
+        public static final String TABLE_NAME = "data";
         public static final String COLUMN_NAME_TITLE = "title";
         public static final String COLUMN_NAME_CONTENT = "content";
         public static final String COLUMN_NAME_CATE = "category";
