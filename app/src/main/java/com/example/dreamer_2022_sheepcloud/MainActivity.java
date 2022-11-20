@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     SimpleDateFormat mFormat = new SimpleDateFormat("M월 달의");
     String formatDate = mFormat.format(mReDate);
 
-    int countWrite;    // 글 등록하면 개수 센 값 가져오기
+    int countList;    // 글 등록하면 개수 센 값 가져오기
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,11 +83,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // WriteActivity에 countRegist 값 받아오기
-        Intent writeIntent = getIntent();
-        countWrite = writeIntent.getIntExtra("count", 0);
+        // ListActivity에 countRegist 값 받아오기
+        Intent listIntent = getIntent();
+        countList = listIntent.getIntExtra("count", 0);
 
-        if(countWrite != 0) {
+        if(countList != 0) {
             ImageView feather = new ImageView(this);
             feather.setImageResource(R.drawable.image_4);   // 이미지 리소스
             LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);

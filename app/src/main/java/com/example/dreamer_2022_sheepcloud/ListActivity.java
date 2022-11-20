@@ -37,6 +37,8 @@ public class ListActivity extends AppCompatActivity {
     public static final int REQUEST_CODE_INSERT = 1000;
     private MemoAdapter mAdapter;
 
+    int countList;  // 글 등록할 때마다 개수 세기
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +53,12 @@ public class ListActivity extends AppCompatActivity {
         mAdapter = new MemoAdapter(this, cursor);
         listView.setAdapter(mAdapter);
 
+        countList = mAdapter.getCount();
+
+        // intent로 MainActivity로 값 전달
+        Intent mainIntent = new Intent(ListActivity.this, MainActivity.class);
+        mainIntent.putExtra("mainCountList", countList);
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -63,8 +71,8 @@ public class ListActivity extends AppCompatActivity {
                 String content = cursor.getString(cursor.getColumnIndexOrThrow(MemoContract.MemoEntry.COLUMN_NAME_CONTENT));
 
                 intent.putExtra("id", id);
-                intent.putExtra("id", title);
-                intent.putExtra("id", content);
+                intent.putExtra("title", title);
+                intent.putExtra("content", content);
 
                 startActivityForResult(intent, REQUEST_CODE_INSERT);
             }
@@ -102,8 +110,10 @@ public class ListActivity extends AppCompatActivity {
         btnUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), UserActivity.class);
-                startActivity(intent);
+                // intent로 UserActivity로 값 전달
+                Intent userIntent = new Intent(ListActivity.this, UserActivity.class);
+                userIntent.putExtra("userCountList", countList);
+                startActivity(userIntent);
             }
         });
 
@@ -126,9 +136,9 @@ public class ListActivity extends AppCompatActivity {
         return dbHelper.getReadableDatabase().query(MemoContract.MemoEntry.TABLE_NAME, null, null, null, null, null, null);
     }
 
-    protected void onActivityResult(int requsetCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(resultCode, resultCode, data);
-        if (requsetCode == REQUEST_CODE_INSERT && resultCode == RESULT_OK) {
+        if (requestCode == REQUEST_CODE_INSERT && resultCode == RESULT_OK) {
             mAdapter.swapCursor(getMemoCursor());
         }
     }

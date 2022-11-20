@@ -36,7 +36,7 @@
 
         <!-- 깃털 1 -->
         <View
-            android:id="@+id/feather_1"
+            android:id="@+id/feather"
             android:layout_width="307dp"
             android:layout_height="200dp"
             android:layout_alignParentLeft="true"
@@ -44,29 +44,6 @@
             android:layout_marginLeft="109dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/image_6" />
-
-        <!-- 깃털 2 -->
-        <View
-            android:id="@+id/feather_2"
-            android:layout_width="256dp"
-            android:layout_height="180dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="50dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/image_4"
-            />
-
-        <!-- 깃털 3 -->
-        <View
-            android:id="@+id/feather_3"
-            android:layout_width="307dp"
-            android:layout_height="136dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="1dp"
-            android:background="@drawable/image_5"/>
     </LinearLayout>
 
 

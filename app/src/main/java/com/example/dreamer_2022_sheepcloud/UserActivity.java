@@ -10,16 +10,20 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -33,6 +37,9 @@ public class UserActivity extends AppCompatActivity {
     ImageButton u_img; // 프로필
     String imgName = "user.png";    // 이미지 이름
 
+    int countList;  // 목록 센 값 가져오기
+    TextView gradeStep;   // 단계 순서
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,12 +47,28 @@ public class UserActivity extends AppCompatActivity {
 
         u_img = findViewById(R.id.ivProfile); // 프로필사진업로드
 
+        gradeStep = findViewById(R.id.grade_text);
+
         // 타이틀바 없애는 거임!! 지우지 마셈!!
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
         btnList = findViewById(R.id.btn_list);
         btnWrite = findViewById(R.id.btn_plus);
+
+        // ListActivity에 countRegist 값 받아오기
+        Intent ListIntent = getIntent();
+        countList = ListIntent.getIntExtra("userCountList", 0);
+
+        if(countList <= 10)
+            gradeStep.setText("Step 1");
+        else if(countList <= 30)
+            gradeStep.setText("Step 2");
+        else if(countList <= 50)
+            gradeStep.setText("Step 3");
+        else if(countList <= 80)
+            gradeStep.setText("Step 4");
+        else gradeStep.setText("램 수면");
 
         btnList.setOnClickListener(new View.OnClickListener() {
             @Override
