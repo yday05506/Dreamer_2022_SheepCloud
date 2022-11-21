@@ -38,7 +38,13 @@ public class WriteActivity extends AppCompatActivity {
     SimpleDateFormat mFormat = new SimpleDateFormat("MM / dd");
     String formatDate = mFormat.format(mReDate);
 
-    int[] countCulture = new int[6];   // 카테고리 선택
+//    int[] countCulture = new int[6];   // 카테고리 선택
+    int countMusical;
+    int countBook;
+    int countMovie;
+    int countDrama;
+    int countMuseum;
+    int countOther;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -92,23 +98,21 @@ public class WriteActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast toast = Toast.makeText(getApplicationContext(), "글을 등록하였습니다.", Toast.LENGTH_SHORT);
                 toast.show();
-                int index = spinner.getSelectedItemPosition();
-                System.out.println("인덱스 값 : " + index);
-                if(index == 1) {    // db랑 연결시켜보기
-                    // cultureKind의 값이 '뮤지컬'이라면
-                    countCulture[0]++; // 뮤지컬 글 개수 증가
-                    System.out.println(countCulture[0]);
+                if (cultureKind[1].equals(spinner.getSelectedItem())) {
+                    countMusical++;
+                    System.out.println(countMusical);
                 }
-                else if(index == 2) // cultureKind의 값이 '책'이라면
-                    countCulture[1]++;    // 책 글 개수 증가
-                else if(index == 3) // cultureKind의 값이 '영화'라면
-                    countCulture[2]++;   // 영화 글 개수 증가
-                else if(index == 4) // cultureKind의 값이 '드라마'라면
-                    countCulture[3]++;   // 드라마 글 개수 증가
-                else if(index == 5) // cultureKind의 값이 '미술관/박물관'이라면
-                    countCulture[4]++;  // 미술관/박물관 글 개수 증가
-                else if(index == 6) // cultureKind의 값이 '기타'라면
-                    countCulture[5]++;   // 기타 글 개수 증가
+                else if(spinner.getSelectedItem() == cultureKind[2]) // cultureKind의 값이 '책'이라면
+                    countBook++;    // 책 글 개수 증가
+                else if(spinner.getSelectedItem() == cultureKind[3]) // cultureKind의 값이 '영화'라면
+                    countMovie++;   // 영화 글 개수 증가
+                else if(spinner.getSelectedItem() == cultureKind[4]) // cultureKind의 값이 '드라마'라면
+                    countDrama++;   // 드라마 글 개수 증가
+                else if(spinner.getSelectedItem() == cultureKind[5]) // cultureKind의 값이 '미술관/박물관'이라면
+                    countMuseum++;  // 미술관/박물관 글 개수 증가
+                else if(spinner.getSelectedItem() == cultureKind[6]) // cultureKind의 값이 '기타'라면
+                    countOther++;   // 기타 글 개수 증가
+                System.out.println(countMusical);
                 onBackPressed();
             }
         });
@@ -119,12 +123,12 @@ public class WriteActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // intent로 UserActivity로 값 전달
                 Intent userIntent = new Intent(WriteActivity.this, UserActivity.class);
-                userIntent.putExtra("userMusicalCount", countCulture[0]);
-                userIntent.putExtra("userBookCount", countCulture[1]);
-                userIntent.putExtra("userMovieCount", countCulture[2]);
-                userIntent.putExtra("userDramaCount", countCulture[3]);
-                userIntent.putExtra("userMuseumCount", countCulture[4]);
-                userIntent.putExtra("userOtherCount", countCulture[5]);
+                userIntent.putExtra("userMusicalCount", countMusical);
+                userIntent.putExtra("userBookCount", countBook);
+                userIntent.putExtra("userMovieCount", countMovie);
+                userIntent.putExtra("userDramaCount", countDrama);
+                userIntent.putExtra("userMuseumCount", countMuseum);
+                userIntent.putExtra("userOtherCount", countOther);
                 startActivity(userIntent);
             }
         });

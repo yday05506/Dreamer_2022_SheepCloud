@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.LayoutInflater;
@@ -19,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,52 +54,62 @@ public class ListActivity extends AppCompatActivity {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
-                final long deleteld = id;
+                PopupMenu popup = new PopupMenu(ListActivity.this, view);
+                getMenuInflater().inflate(R.menu.list_menu, popup.getMenu());
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(ListActivity.this);
-
-                builder.setTitle("data delete");
-                builder.setMessage("are you going to delete the note?");
-                builder.setPositiveButton("delete", new DialogInterface.OnClickListener() {
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int which) {
-                        SQLiteDatabase db = DbHelper.getInstance(ListActivity.this).getWritableDatabase();
-                        int deletedCount = db.delete(Table.Entry.TABLE_NAME, Table.Entry._ID + "=" + deleteld, null);
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        switch (menuItem.getItemId()) {
+                            case R.id.update:
+                                Intent intent = new Intent(ListActivity.this, WriteActivity.class);
 
-                        if (deletedCount == 0) {
-                            Toast.makeText(ListActivity.this, "delete error", Toast.LENGTH_SHORT).show();
-                        } else {
-                            mAdapter.swapCursor(getMemoCursor());
-                            Toast.makeText(ListActivity.this, "delete succeess", Toast.LENGTH_SHORT).show();
+                                Cursor cursor = (Cursor) mAdapter.getItem(position);
+
+                                String title = cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_TITLE));
+                                String content = cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_CONTENT));
+                                String cate = cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_CATE));
+                                String date = cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_DATE));
+
+                                intent.putExtra("id", id);
+                                intent.putExtra("title", title);
+                                intent.putExtra("content", content);
+                                intent.putExtra("category", cate);
+                                intent.putExtra("date", date);
+
+                                startActivityForResult(intent, REQUEST_CODE_INSERT);
+                                break;
+
+                            case R.id.delete:
+                                final long deleteld = id;
+                                AlertDialog.Builder builder = new AlertDialog.Builder(ListActivity.this);
+
+                                builder.setTitle("data delete");
+                                builder.setMessage("are you going to delete the note?");
+                                builder.setPositiveButton("delete", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int which) {
+                                        SQLiteDatabase db = DbHelper.getInstance(ListActivity.this).getWritableDatabase();
+                                        int deletedCount = db.delete(Table.Entry.TABLE_NAME, Table.Entry._ID + "=" + deleteld, null);
+
+                                        if (deletedCount == 0) {
+                                            Toast.makeText(ListActivity.this, "delete error", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            mAdapter.swapCursor(getMemoCursor());
+                                            Toast.makeText(ListActivity.this, "delete succeess", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                                builder.setNegativeButton("cancel", null);
+                                builder.show();
+                                break;
                         }
+                        return false;
                     }
                 });
-                builder.setNegativeButton("cancel", null);
-                builder.show();
+                popup.show();
+
                 return false;
-            }
-        });
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-
-                Intent intent = new Intent(ListActivity.this, WriteActivity.class);
-
-                Cursor cursor = (Cursor) mAdapter.getItem(position);
-
-                String title = cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_TITLE));
-                String content = cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_CONTENT));
-                String cate = cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_CATE));
-                String date = cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_DATE));
-
-                intent.putExtra("id", id);
-                intent.putExtra("title", title);
-                intent.putExtra("content", content);
-                intent.putExtra("category", cate);
-                intent.putExtra("date", date);
-
-                startActivityForResult(intent, REQUEST_CODE_INSERT);
             }
         });
 
@@ -164,6 +177,7 @@ public class ListActivity extends AppCompatActivity {
 
             titleText.setText(cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_TITLE)));
         }
+
     }
 
 }
