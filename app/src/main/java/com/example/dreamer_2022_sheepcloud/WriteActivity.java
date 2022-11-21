@@ -1,10 +1,9 @@
 package com.example.dreamer_2022_sheepcloud;
-
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -16,22 +15,17 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 public class WriteActivity extends AppCompatActivity {
     private EditText mTitleEditText;
     private EditText mContentEditText;
-    private TextView mCategoryTextView;
     private long mMemoId = -1;
-
     TextView textView, writeDate;
     String[] cultureKind = {"    종류 선택", "      뮤지컬", "          책", "        영화", "      드라마", "미술관/박물관", "        기타"};
     ImageButton btnList, btnUser;
     Button btnRegist;
     Spinner spinner;
-
     long mNow = System.currentTimeMillis();
     Date mReDate = new Date(mNow);
     SimpleDateFormat mFormat = new SimpleDateFormat("MM / dd");
@@ -43,41 +37,33 @@ public class WriteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write);
-
         mTitleEditText = findViewById(R.id.write_title);
         mContentEditText = findViewById(R.id.write_contents);
-        mCategoryTextView = findViewById(R.id.write_textView);
-
+        textView = findViewById(R.id.write_textView);
         writeDate = findViewById(R.id.write_date);
         writeDate.setText(formatDate);
         spinner = findViewById(R.id.write_spinner);
-
         btnList = findViewById(R.id.btn_list);
         btnUser = findViewById(R.id.btn_user);
         btnRegist = findViewById(R.id.write_registration);
-
         Intent intent = getIntent();
         if (intent != null) {
             mMemoId = intent.getLongExtra("id", -1);
             String title = intent.getStringExtra("title");
             String content = intent.getStringExtra("content");
-            String category = intent.getStringExtra("category");
-
             mTitleEditText.setText(title);
             mContentEditText.setText(content);
-            mCategoryTextView.setText(category);
         }
 
+        Cursor cursor = getMemoCursor();
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, cultureKind);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        int index = spinner.getSelectedItemPosition();
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-                System.out.println("인덱스 값 : " + index);
-                mCategoryTextView.setText(cultureKind[position]);
+                textView.setText(cultureKind[position]);
             }
 
             @Override
@@ -85,35 +71,27 @@ public class WriteActivity extends AppCompatActivity {
                 textView.setText("");
             }
         });
-
         btnRegist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast toast = Toast.makeText(getApplicationContext(), "글을 등록하였습니다.", Toast.LENGTH_SHORT);
                 toast.show();
-                if(index == 1) {    // db랑 연결시켜보기
-                    // cultureKind의 값이 '뮤지컬'이라면
-                    countCulture[0]++; // 뮤지컬 글 개수 증가
-                    System.out.println(countCulture[0]);
-                }
-                else if(index == 2) // cultureKind의 값이 '책'이라면
-                    countCulture[1]++;    // 책 글 개수 증가
-                else if(index == 3) // cultureKind의 값이 '영화'라면
-                    countCulture[2]++;   // 영화 글 개수 증가
-                else if(index == 4) // cultureKind의 값이 '드라마'라면
-                    countCulture[3]++;   // 드라마 글 개수 증가
-                else if(index == 5) // cultureKind의 값이 '미술관/박물관'이라면
-                    countCulture[4]++;  // 미술관/박물관 글 개수 증가
-                else if(index == 6) // cultureKind의 값이 '기타'라면
-                    countCulture[5]++;   // 기타 글 개수 증가
+                int index = spinner.getSelectedItemPosition();
+                System.out.println("인덱스 값 : " + index);
+                if(index == 1) countCulture[0]++;
+                else if(index == 2) countCulture[1]++;
+                else if(index == 3) countCulture[2]++;
+                else if(index == 4) countCulture[3]++;
+                else if(index == 5) countCulture[4]++;
+                else if(index == 6) countCulture[5]++;
                 onBackPressed();
             }
         });
-
-
         btnUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), UserActivity.class);
+                startActivity(intent);
                 // intent로 UserActivity로 값 전달
                 Intent userIntent = new Intent(WriteActivity.this, UserActivity.class);
                 userIntent.putExtra("userMusicalCount", countCulture[0]);
@@ -133,30 +111,24 @@ public class WriteActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         // 타이틀바 없애는 거임!! 지우지 마셈!!
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
     }
-
     @Override
     public void onBackPressed() {
         String title = mTitleEditText.getText().toString();
         String contents = mContentEditText.getText().toString();
         String category = spinner.getSelectedItem().toString();
         String date = writeDate.getText().toString();
-
         // 저장
         ContentValues contentValues = new ContentValues();
         contentValues.put(Table.Entry.COLUMN_NAME_TITLE, title);
         contentValues.put(Table.Entry.COLUMN_NAME_CONTENT, contents);
         contentValues.put(Table.Entry.COLUMN_NAME_CATE, category);
         contentValues.put(Table.Entry.COLUMN_NAME_DATE, date);
-
-
         // 전달
         SQLiteDatabase db = DbHelper.getInstance(this).getWritableDatabase();
-
         if (mMemoId == -1) {
             long newRowID = db.insert(Table.Entry.TABLE_NAME,
                     null, contentValues);
@@ -168,7 +140,6 @@ public class WriteActivity extends AppCompatActivity {
             }
         } else {
             int count = db.update(Table.Entry.TABLE_NAME, contentValues, Table.Entry._ID + "=" + mMemoId, null);
-
             if (count == 0) {
                 Toast.makeText(this, "modification 오류", Toast.LENGTH_SHORT).show();
             } else {
@@ -176,9 +147,6 @@ public class WriteActivity extends AppCompatActivity {
                 setResult(RESULT_OK);
             }
         }
-
-
-
         super.onBackPressed();
     }
 }
