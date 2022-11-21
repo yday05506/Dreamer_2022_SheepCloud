@@ -23,6 +23,7 @@ import java.util.Date;
 public class WriteActivity extends AppCompatActivity {
     private EditText mTitleEditText;
     private EditText mContentEditText;
+    private TextView mCategoryTextView;
     private long mMemoId = -1;
 
     TextView textView, writeDate;
@@ -45,8 +46,8 @@ public class WriteActivity extends AppCompatActivity {
 
         mTitleEditText = findViewById(R.id.write_title);
         mContentEditText = findViewById(R.id.write_contents);
+        mCategoryTextView = findViewById(R.id.write_textView);
 
-        textView = findViewById(R.id.write_textView);
         writeDate = findViewById(R.id.write_date);
         writeDate.setText(formatDate);
         spinner = findViewById(R.id.write_spinner);
@@ -60,10 +61,11 @@ public class WriteActivity extends AppCompatActivity {
             mMemoId = intent.getLongExtra("id", -1);
             String title = intent.getStringExtra("title");
             String content = intent.getStringExtra("content");
+            String category = intent.getStringExtra("category");
 
             mTitleEditText.setText(title);
             mContentEditText.setText(content);
-
+            mCategoryTextView.setText(category);
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, cultureKind);
@@ -75,7 +77,7 @@ public class WriteActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 System.out.println("인덱스 값 : " + index);
-                textView.setText(cultureKind[position]);
+                mCategoryTextView.setText(cultureKind[position]);
             }
 
             @Override
