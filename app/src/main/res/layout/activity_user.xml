@@ -19,9 +19,8 @@
             android:id="@+id/ivProfile"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/mypage"
             android:onClick="bt1"
-            />
+            android:src="@drawable/mypage" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -46,16 +45,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15sp"
-                android:layout_gravity="center_horizontal">
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15sp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="각성 등급 | "
-                    android:textSize="21sp"
                     android:textColor="#B38A8099"
-                    android:textStyle="bold"/>
+                    android:textSize="21sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/grade_text"
@@ -63,22 +62,22 @@
                     android:layout_height="wrap_content"
                     android:text="등급"
                     android:textColor="#B38A8099"
-                    android:textStyle="bold"
-                    android:textSize="21sp"/>
+                    android:textSize="21sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="55sp"
-                android:layout_gravity="center_horizontal">
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="55sp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="영화 : "
-                    android:textSize="20sp"
-                    android:textColor="#737373" />
+                    android:textColor="#737373"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/grade_movie"
@@ -86,21 +85,21 @@
                     android:layout_height="wrap_content"
                     android:text="등급"
                     android:textColor="#737373"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="95sp"
-                android:layout_gravity="center_horizontal">
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="95sp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="드라마 : "
-                    android:textSize="20sp"
-                    android:textColor="#737373" />
+                    android:textColor="#737373"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/grade_drama"
@@ -108,21 +107,21 @@
                     android:layout_height="wrap_content"
                     android:text="등급"
                     android:textColor="#737373"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="135sp"
-                android:layout_gravity="center_horizontal">
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="135sp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="뮤지컬 : "
-                    android:textSize="20sp"
-                    android:textColor="#737373" />
+                    android:textColor="#737373"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/grade_musical"
@@ -130,21 +129,21 @@
                     android:layout_height="wrap_content"
                     android:text="등급"
                     android:textColor="#737373"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="175sp"
-                android:layout_gravity="center_horizontal">
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="175sp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="미술관 / 박물관 : "
-                    android:textSize="20sp"
-                    android:textColor="#737373" />
+                    android:textColor="#737373"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/grade_museum"
@@ -152,21 +151,21 @@
                     android:layout_height="wrap_content"
                     android:text="등급"
                     android:textColor="#737373"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="215sp"
-                android:layout_gravity="center_horizontal">
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="215sp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="책 : "
-                    android:textSize="20sp"
-                    android:textColor="#737373" />
+                    android:textColor="#737373"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/grade_book"
@@ -174,21 +173,21 @@
                     android:layout_height="wrap_content"
                     android:text="등급"
                     android:textColor="#737373"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="255sp"
-                android:layout_gravity="center_horizontal">
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="255sp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="기타 : "
-                    android:textSize="20sp"
-                    android:textColor="#737373" />
+                    android:textColor="#737373"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/grade_other"
@@ -196,7 +195,7 @@
                     android:layout_height="wrap_content"
                     android:text="등급"
                     android:textColor="#737373"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
             </LinearLayout>
 
         </FrameLayout>

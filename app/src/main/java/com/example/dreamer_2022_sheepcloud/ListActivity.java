@@ -57,37 +57,14 @@ public class ListActivity extends AppCompatActivity {
         Intent mainIntent = new Intent(ListActivity.this, MainActivity.class);
         mainIntent.putExtra("mainCountList", countList);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-
-                Intent intent = new Intent(ListActivity.this, WriteActivity.class);
-
-                Cursor cursor = (Cursor) mAdapter.getItem(position);
-
-                String title = cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_TITLE));
-                String content = cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_CONTENT));
-                String cate = cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_CATE));
-                String date = cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_DATE));
-
-                intent.putExtra("id", id);
-                intent.putExtra("title", title);
-                intent.putExtra("content", content);
-                intent.putExtra("cate", cate);
-                intent.putExtra("date", date);
-
-                startActivityForResult(intent, REQUEST_CODE_INSERT);
-            }
-        });
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
                 final long deleteld = id;
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(ListActivity.this);
 
-                builder.setTitle("memo delete");
+                builder.setTitle("data delete");
                 builder.setMessage("are you going to delete the note?");
                 builder.setPositiveButton("delete", new DialogInterface.OnClickListener() {
                     @Override
@@ -105,9 +82,33 @@ public class ListActivity extends AppCompatActivity {
                 });
                 builder.setNegativeButton("cancel", null);
                 builder.show();
+                return false;
             }
-
         });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+
+                Intent intent = new Intent(ListActivity.this, WriteActivity.class);
+
+                Cursor cursor = (Cursor) mAdapter.getItem(position);
+
+                String title = cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_TITLE));
+                String content = cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_CONTENT));
+                String cate = cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_CATE));
+                String date = cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_DATE));
+
+                intent.putExtra("id", id);
+                intent.putExtra("title", title);
+                intent.putExtra("content", content);
+                intent.putExtra("category", cate);
+                intent.putExtra("date", date);
+
+                startActivityForResult(intent, REQUEST_CODE_INSERT);
+            }
+        });
+
 
         btnUser.setOnClickListener(new View.OnClickListener() {
             @Override
