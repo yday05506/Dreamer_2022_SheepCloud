@@ -33,6 +33,7 @@ public class ListActivity extends AppCompatActivity {
     private MemoAdapter mAdapter;
 
     int countList;  // 글 등록할 때마다 개수 세기
+    int countList2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,7 @@ public class ListActivity extends AppCompatActivity {
         listView.setAdapter(mAdapter);
 
         countList = mAdapter.getCount();
+        countList2 = mAdapter.getCount();
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -135,9 +137,10 @@ public class ListActivity extends AppCompatActivity {
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // intent로 MainActivity로 값 전달
+                // intent로 UserActivity로 값 전달
                 Intent mainIntent = new Intent(ListActivity.this, MainActivity.class);
-                mainIntent.putExtra("mainCountList", countList);
+                mainIntent.putExtra("mainCountList", countList2);
+                System.out.println("목록 개수 : " + countList2);
                 startActivity(mainIntent);
             }
         });

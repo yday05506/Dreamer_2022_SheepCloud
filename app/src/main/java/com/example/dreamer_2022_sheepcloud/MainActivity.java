@@ -43,6 +43,13 @@ public class MainActivity extends AppCompatActivity {
     int countList;    // 글 등록하면 개수 센 값 가져오기
 
     // img = 이불, img_1 : 킹사이즈, img_3 : 퀸사이즈, img_2 : 더블사이즈
+    int pillow = R.drawable.pillow;
+    int bedding = R.drawable.img;
+    int singleBed = R.drawable.singlebed;
+    int supersingleBed = R.drawable.supersinglebed;
+    int doubleBed = R.drawable.img_2;
+    int queenBed = R.drawable.img_3;
+    int kingBed = R.drawable.img_1;
     int[] images = new int[] {R.drawable.pillow, R.drawable.img, R.drawable.singlebed, R.drawable.supersinglebed, R.drawable.img_2, R.drawable.img_3, R.drawable.img_1};
 
     @Override
@@ -63,8 +70,20 @@ public class MainActivity extends AppCompatActivity {
         linear.setBackgroundColor(Color.LTGRAY);
 
         // ListActivity에 countRegist 값 받아오기
-        Intent listIntent = getIntent();
-        countList = listIntent.getIntExtra("count", 0);
+        Intent ListIntent = getIntent();
+        countList = ListIntent.getIntExtra("mainCountList", 0);
+
+        System.out.println("목록 카운트 : " + countList);
+
+        View mImageView = (View) findViewById(R.id.ll);
+
+        if(countList <= 10) mImageView.setBackgroundResource(pillow);
+        else if(countList <= 20) mImageView.setBackgroundResource(bedding);
+        else if(countList <= 30) mImageView.setBackgroundResource(singleBed);
+        else if(countList <= 50) mImageView.setBackgroundResource(supersingleBed);
+        else if(countList <= 70) mImageView.setBackgroundResource(doubleBed);
+        else if(countList <= 80) mImageView.setBackgroundResource(queenBed);
+        else if(countList <= 100) mImageView.setBackgroundResource(kingBed);
 
         btnList.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,18 +108,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        View mImageView = (View) findViewById(R.id.ll);
-
-        System.out.println("목록 카운트 : " + countList);
-
-        if(countList <= 10) mImageView.setBackgroundResource(images[0]);
-        else if(countList <= 20) mImageView.setBackgroundResource(images[1]);
-        else if(countList <= 30) mImageView.setBackgroundResource(images[2]);
-        else if(countList <= 50) mImageView.setBackgroundResource(images[3]);
-        else if(countList <= 70) mImageView.setBackgroundResource(images[4]);
-        else if(countList <= 80) mImageView.setBackgroundResource(images[5]);
-        else if(countList <= 100) mImageView.setBackgroundResource(images[6]);
 
         // 타이틀바 없애는 거임!! 지우지 마셈!!
         ActionBar actionBar = getSupportActionBar();
