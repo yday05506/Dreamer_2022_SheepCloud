@@ -29,6 +29,7 @@
 
     <!-- 깃털존 -->
     <LinearLayout
+        android:id="@+id/ll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="8"
@@ -36,14 +37,23 @@
 
         <!-- 깃털 1 -->
         <View
-            android:id="@+id/feather"
-            android:layout_width="307dp"
+            android:id="@+id/feather1"
+            android:layout_width="257dp"
             android:layout_height="200dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="109dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginLeft="159dp"
             android:background="@drawable/image_6" />
+
+        <View
+            android:id="@+id/feather2"
+            android:layout_width="257dp"
+            android:layout_height="200dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="300sp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/image_4" />
     </LinearLayout>
 
 
@@ -73,6 +83,15 @@
             android:layout_gravity="center"
             android:backgroundTint="#ffffff"
             android:src="@drawable/plus"/>
+
+        <ImageButton
+            android:id="@+id/btn_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:backgroundTint="#ffffff"
+            android:src="@drawable/home_select" />
 
         <ImageButton
             android:id="@+id/btn_user"

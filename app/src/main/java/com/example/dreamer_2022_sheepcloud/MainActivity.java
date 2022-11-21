@@ -42,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
 
     int countList;    // 글 등록하면 개수 센 값 가져오기
 
+    // img = 이불, img_1 : 킹사이즈, img_3 : 퀸사이즈, img_2 : 더블사이즈
+    int[] images = new int[] {R.drawable.pillow, R.drawable.img, R.drawable.singlebed, R.drawable.supersinglebed, R.drawable.img_2, R.drawable.img_3, R.drawable.img_1};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +61,10 @@ public class MainActivity extends AppCompatActivity {
         linear.setOrientation(LinearLayout.VERTICAL);
         linear.setGravity(Gravity.CENTER);
         linear.setBackgroundColor(Color.LTGRAY);
+
+        // ListActivity에 countRegist 값 받아오기
+        Intent listIntent = getIntent();
+        countList = listIntent.getIntExtra("count", 0);
 
         btnList.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,17 +90,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // ListActivity에 countRegist 값 받아오기
-        Intent listIntent = getIntent();
-        countList = listIntent.getIntExtra("count", 0);
+        View mImageView = (View) findViewById(R.id.ll);
 
-        if(countList != 0) {
-            ImageView feather = new ImageView(this);
-            feather.setImageResource(R.drawable.image_4);   // 이미지 리소스
-            LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            linear.addView(feather, param);
-            setContentView(linear);
-        }
+        System.out.println("목록 카운트 : " + countList);
+
+        if(countList <= 10) mImageView.setBackgroundResource(images[0]);
+        else if(countList <= 20) mImageView.setBackgroundResource(images[1]);
+        else if(countList <= 30) mImageView.setBackgroundResource(images[2]);
+        else if(countList <= 50) mImageView.setBackgroundResource(images[3]);
+        else if(countList <= 70) mImageView.setBackgroundResource(images[4]);
+        else if(countList <= 80) mImageView.setBackgroundResource(images[5]);
+        else if(countList <= 100) mImageView.setBackgroundResource(images[6]);
 
         // 타이틀바 없애는 거임!! 지우지 마셈!!
         ActionBar actionBar = getSupportActionBar();

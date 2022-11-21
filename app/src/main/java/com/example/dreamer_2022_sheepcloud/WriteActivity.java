@@ -3,6 +3,7 @@ package com.example.dreamer_2022_sheepcloud;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -23,12 +24,12 @@ import java.util.Date;
 public class WriteActivity extends AppCompatActivity {
     private EditText mTitleEditText;
     private EditText mContentEditText;
-    private TextView mCategoryTextView;
+
     private long mMemoId = -1;
 
     TextView textView, writeDate;
     String[] cultureKind = {"    종류 선택", "      뮤지컬", "          책", "        영화", "      드라마", "미술관/박물관", "        기타"};
-    ImageButton btnList, btnUser;
+    ImageButton btnList, btnUser, btnHome;
     Button btnRegist;
     Spinner spinner;
 
@@ -39,6 +40,7 @@ public class WriteActivity extends AppCompatActivity {
 
     int[] countCulture = new int[6];   // 카테고리 선택
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +48,7 @@ public class WriteActivity extends AppCompatActivity {
 
         mTitleEditText = findViewById(R.id.write_title);
         mContentEditText = findViewById(R.id.write_contents);
-        mCategoryTextView = findViewById(R.id.write_textView);
+        textView = findViewById(R.id.write_textView);
 
         writeDate = findViewById(R.id.write_date);
         writeDate.setText(formatDate);
@@ -55,6 +57,7 @@ public class WriteActivity extends AppCompatActivity {
         btnList = findViewById(R.id.btn_list);
         btnUser = findViewById(R.id.btn_user);
         btnRegist = findViewById(R.id.write_registration);
+        btnHome = findViewById(R.id.btn_home);
 
         Intent intent = getIntent();
         if (intent != null) {
@@ -65,19 +68,17 @@ public class WriteActivity extends AppCompatActivity {
 
             mTitleEditText.setText(title);
             mContentEditText.setText(content);
-            mCategoryTextView.setText(category);
+            textView.setText(category);
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, cultureKind);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        int index = spinner.getSelectedItemPosition();
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-                System.out.println("인덱스 값 : " + index);
-                mCategoryTextView.setText(cultureKind[position]);
+                textView.setText(cultureKind[position]);
             }
 
             @Override
@@ -91,6 +92,8 @@ public class WriteActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast toast = Toast.makeText(getApplicationContext(), "글을 등록하였습니다.", Toast.LENGTH_SHORT);
                 toast.show();
+                int index = spinner.getSelectedItemPosition();
+                System.out.println("인덱스 값 : " + index);
                 if(index == 1) {    // db랑 연결시켜보기
                     // cultureKind의 값이 '뮤지컬'이라면
                     countCulture[0]++; // 뮤지컬 글 개수 증가
@@ -130,6 +133,14 @@ public class WriteActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });

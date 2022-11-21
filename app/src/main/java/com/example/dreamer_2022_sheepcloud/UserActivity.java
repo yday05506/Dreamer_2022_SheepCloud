@@ -33,7 +33,7 @@ import java.io.InputStream;
 
 public class UserActivity extends AppCompatActivity {
     private static final Bundle REQUEST_CODE = null;
-    ImageButton btnList, btnWrite;
+    ImageButton btnList, btnWrite, btnHome;
     ImageButton u_img; // 프로필
     String imgName = "user.png";    // 이미지 이름
 
@@ -64,6 +64,7 @@ public class UserActivity extends AppCompatActivity {
 
         btnList = findViewById(R.id.btn_list);
         btnWrite = findViewById(R.id.btn_plus);
+        btnHome = findViewById(R.id.btn_home);
 
         // ListActivity에 countRegist 값 받아오기
         Intent ListIntent = getIntent();
@@ -95,7 +96,7 @@ public class UserActivity extends AppCompatActivity {
         System.out.println("미술관/박물관 : " + countCulture[4]);
         System.out.println("기타 : " + countCulture[5]);
 
-        for(int i = 0; i < countList; i++) {
+        for(int i = 0; i < countCulture.length; i++) {
             if(countCulture[i] <= 10)
                 gradeCulture[i].setText("Step 1");
             else if(countCulture[i] <= 30)
@@ -119,6 +120,14 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), WriteActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });

@@ -24,18 +24,12 @@ import android.widget.Toast;
 
 
 public class ListActivity extends AppCompatActivity {
-    ImageButton btnWrite, btnUser;
+    ImageButton btnWrite, btnUser, btnHome;
 
     public static final int REQUEST_CODE_INSERT = 1000;
     private MemoAdapter mAdapter;
 
     int countList;  // 글 등록할 때마다 개수 세기
-    int countMusical;   // 뮤지컬 선택
-    int countBook;  // 책 선택
-    int countMovie; // 영화 선택
-    int countDrama; // 드라마 선택
-    int countMuseum;    // 미술관/박물관 선택
-    int countOther; // 기타 선택
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +38,7 @@ public class ListActivity extends AppCompatActivity {
 
         btnWrite = findViewById(R.id.btn_plus);
         btnUser = findViewById(R.id.btn_user);
+        btnHome = findViewById(R.id.btn_home);
 
         ListView listView = findViewById(R.id.listv);
 
@@ -52,10 +47,6 @@ public class ListActivity extends AppCompatActivity {
         listView.setAdapter(mAdapter);
 
         countList = mAdapter.getCount();
-
-        // intent로 MainActivity로 값 전달
-        Intent mainIntent = new Intent(ListActivity.this, MainActivity.class);
-        mainIntent.putExtra("mainCountList", countList);
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -109,13 +100,13 @@ public class ListActivity extends AppCompatActivity {
             }
         });
 
-
         btnUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // intent로 UserActivity로 값 전달
                 Intent userIntent = new Intent(ListActivity.this, UserActivity.class);
                 userIntent.putExtra("userCountList", countList);
+                System.out.println("목록 개수 : " + countList);
                 startActivity(userIntent);
             }
         });
@@ -125,6 +116,16 @@ public class ListActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), WriteActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // intent로 MainActivity로 값 전달
+                Intent mainIntent = new Intent(ListActivity.this, MainActivity.class);
+                mainIntent.putExtra("mainCountList", countList);
+                startActivity(mainIntent);
             }
         });
 
@@ -146,7 +147,7 @@ public class ListActivity extends AppCompatActivity {
         }
     }
 
-    private static class MemoAdapter extends CursorAdapter {
+    static class MemoAdapter extends CursorAdapter {
 
         public MemoAdapter(Context context, Cursor c) {
             super(context, c);
