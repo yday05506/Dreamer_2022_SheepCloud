@@ -3,13 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Dreamer_2022_SheepCloud/app/src/main/res/drawable/shape_itembackground.xml" value="0.2105" />
         <entry key="..\:/Dreamer_2022_SheepCloud/app/src/main/res/layout/activity_feeling_upload.xml" value="0.21603260869565216" />
-        <entry key="..\:/Dreamer_2022_SheepCloud/app/src/main/res/layout/activity_list.xml" value="0.1" />
+        <entry key="..\:/Dreamer_2022_SheepCloud/app/src/main/res/layout/activity_list.xml" value="0.2" />
         <entry key="..\:/Dreamer_2022_SheepCloud/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Dreamer_2022_SheepCloud/app/src/main/res/layout/activity_user.xml" value="0.25" />
         <entry key="..\:/Dreamer_2022_SheepCloud/app/src/main/res/layout/activity_write.xml" value="0.25" />
         <entry key="..\:/Dreamer_2022_SheepCloud/app/src/main/res/layout/list_card.xml" value="0.14667781027998328" />
+        <entry key="..\:/Dreamer_2022_SheepCloud/app/src/main/res/layout/listv_item.xml" value="0.33" />
         <entry key="..\:/Dreamer_2022_SheepCloud/app/src/main/res/layout/spinner_custom.xml" value="0.30012825994014536" />
+        <entry key="..\:/Dreamer_2022_SheepCloud/app/src/main/res/menu/list_menu.xml" value="0.20677083333333332" />
         <entry key="..\:/Dreamer_2022_SheepCloud/app/src/main/res/menu/search.xml" value="0.2548656163113994" />
         <entry key="..\:/Users/Mirim/AndroidStudioProjects/Dreamer_2022_SheepCloud/app/src/main/res/drawable/image_6.xml" value="0.1" />
         <entry key="..\:/Users/Mirim/AndroidStudioProjects/Dreamer_2022_SheepCloud/app/src/main/res/drawable/spinner_bg.xml" value="0.1225" />

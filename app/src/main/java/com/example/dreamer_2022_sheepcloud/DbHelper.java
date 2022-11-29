@@ -27,6 +27,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String SQL_DELETE_ENTERS =
             "DROP TABLE IF EXISTS " + Table.Entry.TABLE_NAME;
 
+
     public static DbHelper getInstance(Context context) {
         if (sInstance == null) {
             sInstance = new DbHelper(context);
@@ -34,7 +35,7 @@ public class DbHelper extends SQLiteOpenHelper {
         return sInstance;
     }
 
-    private DbHelper(Context context) {
+    public DbHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 

@@ -11,7 +11,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,13 +27,12 @@ import android.widget.Toast;
 
 public class ListActivity extends AppCompatActivity {
     ImageButton btnWrite, btnUser, btnHome;
-
+    int id;
     public static final int REQUEST_CODE_INSERT = 1000;
-    private MemoAdapter mAdapter;
 
     int countList;  // 글 등록할 때마다 개수 세기
     int countList2;
-
+    ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,18 +42,23 @@ public class ListActivity extends AppCompatActivity {
         btnUser = findViewById(R.id.btn_user);
         btnHome = findViewById(R.id.btn_home);
 
-        ListView listView = findViewById(R.id.listv);
+        listView = findViewById(R.id.listv);
 
-        Cursor cursor = getMemoCursor();
-        mAdapter = new MemoAdapter(this, cursor);
-        listView.setAdapter(mAdapter);
+        displayList();
 
-        countList = mAdapter.getCount();
-        countList2 = mAdapter.getCount();
+//        Cursor cursor = getMemoCursor();
+//        MemoAdapter mAdapter = new MemoAdapter(this, cursor);
+
+        ListViewAdapter adapter = new ListViewAdapter();
+
+//        listView.setAdapter(mAdapter);
+
+//        countList = mAdapter.getCount();
+//        countList2 = mAdapter.getCount();
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long i) {
                 PopupMenu popup = new PopupMenu(ListActivity.this, view);
                 getMenuInflater().inflate(R.menu.list_menu, popup.getMenu());
 
@@ -66,8 +69,9 @@ public class ListActivity extends AppCompatActivity {
                             case R.id.update:
                                 Intent intent = new Intent(ListActivity.this, WriteActivity.class);
 
-                                Cursor cursor = (Cursor) mAdapter.getItem(position);
+                                Cursor cursor = adapter.getItem(position);
 
+                                id = cursor.getInt(cursor.getColumnIndexOrThrow(Table.Entry._ID));
                                 String title = cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_TITLE));
                                 String content = cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_CONTENT));
                                 String cate = cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_CATE));
@@ -83,6 +87,7 @@ public class ListActivity extends AppCompatActivity {
                                 break;
 
                             case R.id.delete:
+
                                 final long deleteld = id;
                                 AlertDialog.Builder builder = new AlertDialog.Builder(ListActivity.this);
 
@@ -97,7 +102,7 @@ public class ListActivity extends AppCompatActivity {
                                         if (deletedCount == 0) {
                                             Toast.makeText(ListActivity.this, "delete error", Toast.LENGTH_SHORT).show();
                                         } else {
-                                            mAdapter.swapCursor(getMemoCursor());
+//                                            mAdapter.swapCursor(getMemoCursor());
                                             Toast.makeText(ListActivity.this, "delete succeess", Toast.LENGTH_SHORT).show();
                                         }
                                     }
@@ -114,6 +119,8 @@ public class ListActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
 
         btnUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,36 +158,58 @@ public class ListActivity extends AppCompatActivity {
 
     }
 
-    private Cursor getMemoCursor() {
-        DbHelper dbHelper = DbHelper.getInstance(this);
-        return dbHelper.getReadableDatabase().query(Table.Entry.TABLE_NAME, null, null, null, null, null, null);
+    void displayList(){
+        DbHelper helper = new DbHelper(this);
+        SQLiteDatabase database = helper.getReadableDatabase();
+
+        //Cursor라는 그릇에 목록을 담아주기
+        Cursor cursor = database.rawQuery("SELECT * FROM data",null);
+
+        ListViewAdapter adapter = new ListViewAdapter();
+
+        //목록의 개수만큼 순회하여 adapter에 있는 list배열에 add
+        while(cursor.moveToNext()){
+            //num 행은 가장 첫번째에 있으니 0번이 되고, name은 1번
+            adapter.addItemToList(cursor.getString(1), cursor.getString(2), cursor.getString(3));
+        }
+
+        //리스트뷰의 어댑터 대상을 여태 설계한 adapter로 설정
+        listView.setAdapter(adapter);
+
+
     }
 
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(resultCode, resultCode, data);
-        if (requestCode == REQUEST_CODE_INSERT && resultCode == RESULT_OK) {
-            mAdapter.swapCursor(getMemoCursor());
-        }
-    }
 
-    static class MemoAdapter extends CursorAdapter {
+//    private Cursor getMemoCursor() {
+//        DbHelper dbHelper = DbHelper.getInstance(this);
+//        return dbHelper.getReadableDatabase().query(Table.Entry.TABLE_NAME, null, null, null, null, null, null);
+//    }
 
-        public MemoAdapter(Context context, Cursor c) {
-            super(context, c);
-        }
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(resultCode, resultCode, data);
+//        if (requestCode == REQUEST_CODE_INSERT && resultCode == RESULT_OK) {
+//            mAdapter.swapCursor(getMemoCursor());
+//        }
+//    }
 
-        @Override
-        public View newView(Context context, Cursor cursor, ViewGroup parent) {
-            return LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_1, parent, false);
-        }
-
-        @Override
-        public void bindView(View view, Context context, Cursor cursor) {
-            TextView titleText = view.findViewById(android.R.id.text1);
-
-            titleText.setText(cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_TITLE)));
-        }
-
-    }
+//    static class MemoAdapter extends CursorAdapter {
+//
+//        public MemoAdapter(Context context, Cursor c) {
+//            super(context, c);
+//        }
+//
+//        @Override
+//        public View newView(Context context, Cursor cursor, ViewGroup parent) {
+//            return LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_1, parent, false);
+//        }
+//
+//        @Override
+//        public void bindView(View view, Context context, Cursor cursor) {
+//            TextView titleText = view.findViewById(android.R.id.text1);
+//
+//            titleText.setText(cursor.getString(cursor.getColumnIndexOrThrow(Table.Entry.COLUMN_NAME_TITLE)));
+//        }
+//
+//    }
 
 }
